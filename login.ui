@@ -6,29 +6,67 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>388</width>
+    <width>391</width>
     <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+	background-color: rgb(208, 208, 208);
+}
+QLineEdit {
+	border : none;
+}
+
+QLabel {
+qproperty-alignment: AlignRight;
+}
+
+QPushButton{
+border-radius : 10px;
+background : red;
+}
+
+QPushButton:pressed {
+    background-color: rgb(224, 0, 0);
+    border-style: inset;
+}
+
+
+QGroupBox {
+border: 1px solid red;
+border-color: red;
+font-size: 14px;
+border-radius: 15px;
+}
+QGroupBox::title {
+qproperty-alignment: AlignCenter;
+border-top-left-radius: 9px;
+border-top-right-radius: 9px;
+padding: 2px 129px;
+background-color: red;
+color: black;
+}</string>
+  </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>30</y>
-     <width>301</width>
+     <width>331</width>
      <height>221</height>
     </rect>
    </property>
    <property name="title">
-    <string>Start</string>
+    <string>Chess Hero</string>
    </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>44</x>
+      <x>60</x>
       <y>50</y>
       <width>41</width>
       <height>20</height>
@@ -41,7 +79,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>44</x>
+      <x>60</x>
       <y>80</y>
       <width>41</width>
       <height>20</height>
@@ -54,7 +92,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>44</x>
+      <x>60</x>
       <y>110</y>
       <width>41</width>
       <height>20</height>
@@ -67,7 +105,7 @@
    <widget class="QLineEdit" name="title">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>50</y>
       <width>141</width>
       <height>22</height>
@@ -77,7 +115,7 @@
    <widget class="QLineEdit" name="white">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>80</y>
       <width>101</width>
       <height>22</height>
@@ -87,7 +125,7 @@
    <widget class="QLineEdit" name="black">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>110</y>
       <width>101</width>
       <height>22</height>
@@ -97,8 +135,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>140</y>
+      <x>120</x>
+      <y>150</y>
       <width>101</width>
       <height>28</height>
      </rect>
@@ -113,8 +151,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>170</y>
+      <x>120</x>
+      <y>180</y>
       <width>101</width>
       <height>28</height>
      </rect>
