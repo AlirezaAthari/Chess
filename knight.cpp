@@ -1,6 +1,6 @@
 #include "knight.h"
 
-Knight::Knight(QObject *parent) : QObject(parent)
-{
+//Knight::Knight(QObject *parent) : QObject(parent)
+//{
 
-}
+//}

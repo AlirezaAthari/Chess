@@ -30,7 +30,7 @@ private:
     QChar symbol;
     Cell *currentCell;
     bool piecePlaced;
-    QList <Cell *> location;
+    QList <Cell *> cells;
 };
 
 #endif // CHESSMAN_H

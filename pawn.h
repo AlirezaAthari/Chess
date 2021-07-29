@@ -6,11 +6,9 @@
 
 class Pawn : public chessman
 {
-    Q_OBJECT
 public:
-    explicit Pawn(QObject *parent = nullptr);
+    //explicit Pawn(QObject *parent = nullptr);
 
-signals:
 
 };
 

@@ -1,16 +1,17 @@
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
-
+#include <QGraphicsRectItem>
 #include <QObject>
+#include "chessman.h"
 
-class ChessBoard : public QObject
+class ChessBoard
 {
-    Q_OBJECT
 public:
-    explicit ChessBoard(QObject *parent = nullptr);
-    void movePiece(QString);
-signals:
+    ChessBoard();
+    QVector<QVector<Cell *>> drawBoard(int x, int y);
 
+    QString movePiece();
+private:
 };
 
 #endif // CHESSBOARD_H

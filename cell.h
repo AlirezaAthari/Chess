@@ -1,14 +1,11 @@
 #ifndef CELL_H
 #define CELL_H
-
-#include <QObject>
 #include <qbrush.h>
 #include "chessman.h"
 #include "QGraphicsRectItem"
 class chessman;
 class Cell : public QGraphicsRectItem
 {
-    Q_OBJECT
 public:
     Cell(QGraphicsItem *parent = nullptr);
     void setOccupied(bool);
@@ -30,10 +27,6 @@ private:
     QBrush brush;
     QColor cellColor;
     QString pieceColor;
-
-
-signals:
-
 };
 
 #endif // CELL_H
