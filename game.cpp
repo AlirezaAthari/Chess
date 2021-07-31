@@ -12,21 +12,8 @@ Game::Game(QWidget *parent)
     ui->player_2->setText(black);
     ui->player_1->setText(white);
     ui->turn->setText(turn);
-    cb = new ChessBoard;
-    QVector<QVector<Cell *>> board;
-    board = cb->drawBoard(0,0);
-    setBlackMans();
-    setWhiteMans();
-    for (size_t i = 0 ; i < 8 ; i++ )
-    {
-        for (size_t j = 0; j< 8 ; j++)
-        {
-            chessScene.addItem(board[i][j]);
-        }
-    }
-    QGraphicsView c(&chessScene);
-    ui->chessboardscene = &c;
-    ui->chessboardscene->show();
+    setBoard();
+
 
 }
 
@@ -163,6 +150,10 @@ void Game::reset()
     }
 }
 
+void Game::endGame() //exit
+{
+
+}
 
 Game::~Game()
 {
@@ -177,6 +168,32 @@ void Game::setBlack(const QString & b)
 void Game::setWhite(const QString & w)
 {
     white = w;
+}
+
+void Game::setBoard()
+{
+
+    alives.clear();
+    whiteDeaths.clear();
+    blackDeaths.clear();
+    turn="White";
+    whites.clear();
+    blacks.clear();
+    cb = new ChessBoard;
+    QVector<QVector<Cell *>> board;
+    board = cb->drawBoard(0,0);
+    setBlackMans();
+    setWhiteMans();
+    for (size_t i = 0 ; i < 8 ; i++ )
+    {
+        for (size_t j = 0; j< 8 ; j++)
+        {
+            chessScene.addItem(board[i][j]);
+        }
+    }
+    QGraphicsView c(&chessScene);
+    ui->chessboardscene = &c;
+    ui->chessboardscene->show();
 }
 
 void Game::setTitle(const QString & t)
@@ -195,3 +212,16 @@ QString Game::getTurn()
 {
     return  turn;
 }
+
+void Game::on_pushButton_clicked() //undo
+{
+
+}
+
+
+void Game::on_pushButton_2_clicked() //start
+{
+    setBoard();
+    addPiece();
+}
+

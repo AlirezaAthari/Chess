@@ -14,6 +14,7 @@ class Game : public QMainWindow
     Q_OBJECT
 
 public:
+    void setBoard();
     void setTitle(const QString &);
     void setWhite(const QString &);
     void setBlack(const QString &);
@@ -24,11 +25,17 @@ public:
     void addPieceToDeaths(chessman *);
     void addPiece();
     void reset();
+    void endGame();
     Cell * chessBoard[8][8];
     QList <chessman *> alives;
     chessman * movingPiece;
     Game(QWidget *parent = nullptr);
     ~Game();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::Game *ui;

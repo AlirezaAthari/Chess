@@ -10,22 +10,22 @@ class Cell;
 class chessman :public QGraphicsPixmapItem
 {
 public:
-    chessman(QString = "" , QGraphicsItem * = nullptr);
+    chessman(QString , QChar , QGraphicsItem * = nullptr);
     void setCell(Cell *);
     void setColor(QString);
-    virtual void setSymbol(QChar) = 0;
+    virtual void setSymbol(QChar);
     Cell * getCell();
     QString getColor();
-    virtual QChar getSymbol() = 0;
+    QChar getSymbol();
     virtual void setImage() = 0;
     QList <Cell *> moveCells();
-    virtual void moves() = 0;
+    virtual void moves(Cell * cb[][8]) = 0;
     void setPiecePlaced(bool);
     bool getPiecePlaced();
     bool cellColorise(Cell *);
     void cellDecolor();
 
-private:
+    protected:
     QString color;
     QChar symbol;
     Cell *currentCell;
