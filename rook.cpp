@@ -1,4 +1,8 @@
 #include "rook.h"
+#include "cell.h"
+#include "chesman.h"
+#include "chessBoard.h"
+#include "game.h"
 
 Rook::Rook(QString color,QGraphicsItem *parent):chessman(color, 'R' , parent)
 {
@@ -74,4 +78,3 @@ void Rook::moves(Cell * cb[][8])
               }
         }
 }
-
