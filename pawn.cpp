@@ -9,12 +9,13 @@
 pawn::pawn(QString color,QGraphicsItem *parent):chessman(color, 'P' , parent)
 {
     setImage();
+    firstmove = true ;
 }
 
 
 void Pawn::setImage()
 {
-    if(side == "white")
+    if(getcolor() == "white")
         setPixmap(QPixmap(":/images/pawn1.png"));
     else
         setPixmap(QPixmap(":/images/pawn.png"));
@@ -22,7 +23,7 @@ void Pawn::setImage()
 
 
 
-void Pawn::moves()
+void Pawn::moves(Cell * cb[][8])
 {
     cells.clear() ;
 
