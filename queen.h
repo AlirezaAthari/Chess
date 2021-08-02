@@ -6,13 +6,10 @@ class Queen : public chessman
 {
 
 public:
-  queen(QString, QGraphicsItem * = nullptr);
-
-     virtual void setImage();
-
-      virtual void moves(Cell * cb[][8]);
-
+   queen(QString, QGraphicsItem * = nullptr) ;
+   virtual void setImage() ;
+   virtual void moves(Cell * cb[][8]) ;
 
 };
 
-#endif // QUEEN_H
+#endif 
