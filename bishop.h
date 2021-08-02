@@ -5,8 +5,10 @@
 class Bishop : public chessman
 {
 public:
-    //explicit Bishop(QObject *parent = nullptr);
+      Bishop(QString, QGraphicsItem * = nullptr);
+      virtual void setImage();
+      virtual void moves(cell * cb[][8]);
 
 };
 
-#endif // BISHOP_H
+#endif 
