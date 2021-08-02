@@ -26,4 +26,3 @@ void Login::on_pushButton_clicked()
     g->setTitle(t);
     hide();
 }
-
