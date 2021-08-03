@@ -6,10 +6,10 @@
 class Rook : public chessman
 {
 public:
-    Rook(QString, QGraphicsItem * = nullptr);
+   Rook(QString, QGraphicsItem * = nullptr) ;
+   virtual void setImage() ;
+   virtual void moves(Cell * cb[][8]) ;
 
-    virtual void setImage();
-    virtual void moves(Cell * cb[][8]);
 };
 
-#endif // ROOK_H
+#endif

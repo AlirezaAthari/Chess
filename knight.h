@@ -6,10 +6,12 @@
 class Knight : public chessman
 {
 public:
-    //explicit Knight(QObject *parent = nullptr);
+   Rook(QString, QGraphicsItem * = nullptr) ;
+   virtual void setImage() ;
+   virtual void moves(Cell * cb[][8]) ;
 
 signals:
 
 };
 
-#endif // KNIGHT_H
+#endif

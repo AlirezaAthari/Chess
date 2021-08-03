@@ -1,15 +1,17 @@
 #ifndef PAWN_H
 #define PAWN_H
 
-#include <QObject>
 #include "chessman.h"
-
-class Pawn : public chessman
+class Pawn:public Chessman
 {
 public:
-    //explicit Pawn(QObject *parent = nullptr);
+   pawn(QString, QGraphicsItem * = nullptr);
+   virtual void setImage();
+   virtual void moves(Cell * cb[][8]);
+
+private:
 
 
 };
 
-#endif // PAWN_H
+#endif

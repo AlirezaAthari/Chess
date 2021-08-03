@@ -22,7 +22,7 @@ public:
     char column;
 
 private:
-    bool occupied;
+      bool occupied;
     QString address;
     QBrush brush;
     QColor cellColor;
