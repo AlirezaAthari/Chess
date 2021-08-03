@@ -5,6 +5,8 @@
 #include <QGraphicsPixmapItem>
 #include "QGraphicsItem"
 #include "cell.h"
+#include "globals.h"
+#include "globals_copy.h"
 
 class Cell;
 class chessman :public QGraphicsPixmapItem

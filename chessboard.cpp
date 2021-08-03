@@ -1,11 +1,4 @@
 #include "chessboard.h"
-#include "cell.h"
-#include "queen.h"
-#include "rook.h"
-#include "pawn.h"
-#include "king.h"
-#include "knight.h"
-#include "bishop.h"
 
 ChessBoard::ChessBoard()
 {

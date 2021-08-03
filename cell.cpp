@@ -2,10 +2,10 @@
 
 Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
-    setAddress("");
+    setAddress("NONE");
     setPiece(NULL);
     setOccupied(false);
-    setPieceColor("");
+    setPieceColor("NONE");
     piece = NULL;
     setRect(0,0,80,80);
     brush.setStyle(Qt::SolidPattern);
@@ -23,7 +23,7 @@ void Cell::setOccupied(bool o)
     if(o)
         setPieceColor(piece->getColor());
     else
-        setPieceColor("");
+        setPieceColor("NONE");
 }
 
 void Cell::setAddress(QString a)
@@ -48,6 +48,11 @@ void Cell::setColor(QColor color)
 void Cell::resetCellColor()
 {
     setColor(cellColor);
+}
+
+void Cell::setPieceColor(QString c)
+{
+    pieceColor = c;
 }
 
 QString Cell::getAddress()

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "game.h"
+#include "ui_login.h"
 namespace Ui {
 class Login;
 }

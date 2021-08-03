@@ -2,11 +2,15 @@
 #define KNIGHT_H
 
 #include "chessman.h"
+#include "cell.h"
+#include "chessman.h"
+#include "chessboard.h"
+#include "game.h"
 
 class Knight : public chessman
 {
 public:
-   Rook(QString, QGraphicsItem * = nullptr) ;
+   Knight(QString, QGraphicsItem * = nullptr) ;
    virtual void setImage() ;
    virtual void moves(Cell * cb[][8]) ;
 

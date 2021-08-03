@@ -1,10 +1,20 @@
 #ifndef GAME_H
 #define GAME_H
-
 #include <QMainWindow>
 #include <QGraphicsView>
 #include "chessboard.h"
 #include "cell.h"
+#include "globals.h"
+#include <QAbstractScrollArea>
+#include "ui_game.h"
+#include "chessboard.h"
+#include "pawn.h"
+#include "bishop.h"
+#include "king.h"
+#include "queen.h"
+#include "knight.h"
+#include "rook.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
 QT_END_NAMESPACE

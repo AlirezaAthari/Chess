@@ -1,8 +1,4 @@
 #include "game.h"
-#include <QAbstractScrollArea>
-#include "ui_game.h"
-#include "chessboard.h"
-#include "globals.h"
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
@@ -14,8 +10,6 @@ Game::Game(QWidget *parent)
     ui->player_1->setText(white);
     ui->turn->setText(turn);
     setBoard();
-
-
 }
 
 
@@ -23,52 +17,52 @@ Game::Game(QWidget *parent)
 void Game::setWhiteMans()
 {
 
-//    chessman *piece;
-//    for(int i = 0; i < 8; i++) {
-//        piece = new Pawn("White");
-//        white.append(piece);
-//    }
-//    piece = new Rook("White");
-//    white.append(piece);
-//    piece = new Knight("White");
-//    white.append(piece);
-//    piece = new Bishop("White");
-//    white.append(piece);
-//    piece = new Queen("White");
-//    white.append(piece);
-//    piece = new King("White");
-//    white.append(piece);
-//    piece = new Bishop("White");
-//    white.append(piece);
-//    piece = new Knight("White");
-//    white.append(piece);
-//    piece = new Rook("White");
-//    white.append(piece);
+    chessman *piece;
+    for(int i = 0; i < 8; i++) {
+        piece = new Pawn("White");
+        whites.append(piece);
+    }
+    piece = new Rook("White");
+    whites.append(piece);
+    piece = new Knight("White");
+    whites.append(piece);
+    piece = new Bishop("White");
+    whites.append(piece);
+    piece = new Queen("White");
+    whites.append(piece);
+    piece = new King("White");
+    whites.append(piece);
+    piece = new Bishop("White");
+    whites.append(piece);
+    piece = new Knight("White");
+    whites.append(piece);
+    piece = new Rook("White");
+    whites.append(piece);
 }
 
 void Game::setBlackMans()
 {
-//    chessman *piece;
-//    piece = new Rook("Black");
-//    black.append(piece);
-//    piece = new Knight("Black");
-//    black.append(piece);
-//    piece = new Bishop("Black");
-//    black.append(piece);
-//    piece = new Queen("Black");
-//    black.append(piece);
-//    piece = new King("Black");
-//    black.append(piece);
-//    piece = new Bishop("Black");
-//    black.append(piece);
-//    piece = new Knight("Black");
-//    black.append(piece);
-//    piece = new Rook("Black");
-//    black.append(piece);
-//    for(int i = 0; i < 8; i++) {
-//        piece = new Pawn("Black");
-//        black.append(piece);
-    //    }
+    chessman *piece;
+    piece = new Rook("Black");
+    blacks.append(piece);
+    piece = new Knight("Black");
+    blacks.append(piece);
+    piece = new Bishop("Black");
+    blacks.append(piece);
+    piece = new Queen("Black");
+    blacks.append(piece);
+    piece = new King("Black");
+    blacks.append(piece);
+    piece = new Bishop("Black");
+    blacks.append(piece);
+    piece = new Knight("Black");
+    blacks.append(piece);
+    piece = new Rook("Black");
+    blacks.append(piece);
+    for(int i = 0; i < 8; i++) {
+        piece = new Pawn("Black");
+        blacks.append(piece);
+        }
 }
 
 void Game::addPieceToDeaths(chessman * p)
@@ -103,7 +97,7 @@ void Game::addPiece()
         for(int j = 0; j < 8; j++)
         {
 
-            Cell *c =chessBoard[i][j];
+            Cell *c =globalcontainer::chessBoard[i][j];
             if(i < 2) {
                 static int m;
                 c->setPiece(blacks[m]);
@@ -128,7 +122,7 @@ void Game::reset()
         for(int j = 0; j < 8; j++)
         {
 
-            Cell *c =chessBoard[i][j];
+            Cell *c = globalcontainer::chessBoard[i][j];
             c->setOccupied(false);
             c->setPieceColor("NONE");
             c->piece = NULL;
@@ -190,6 +184,7 @@ void Game::setBoard()
         for (size_t j = 0; j< 8 ; j++)
         {
             chessScene.addItem(board[i][j]);
+            globalcontainer::chessBoard[i][j] = board[i][j];
         }
     }
     QGraphicsView c(&chessScene);

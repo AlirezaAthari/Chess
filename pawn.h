@@ -2,10 +2,18 @@
 #define PAWN_H
 
 #include "chessman.h"
-class Pawn:public Chessman
+
+#include "cell.h"
+#include "chessman.h"
+#include "chessboard.h"
+#include "game.h"
+#include <QDebug>
+#include <typeinfo>
+#include "king.h"
+class Pawn:public chessman
 {
 public:
-   pawn(QString, QGraphicsItem * = nullptr);
+   Pawn(QString, QGraphicsItem * = nullptr);
    virtual void setImage();
    virtual void moves(Cell * cb[][8]);
 

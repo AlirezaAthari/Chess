@@ -1,6 +1,4 @@
 #include "login.h"
-#include "ui_login.h"
-#include "game.h"
 
 Login::Login(QWidget *parent) :
     QDialog(parent),

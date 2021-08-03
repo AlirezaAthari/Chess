@@ -1,23 +1,19 @@
 #include "knight.h"
-#include "cell.h"
-#include "chessman.h"
-#include "chessBoard.h"
-#include "game.h"
 
-knight::knight(QString color , QGraphicsItem *parent):chessman(color , 'H' , parent)
+Knight::Knight(QString color , QGraphicsItem *parent):chessman(color , 'H' , parent)
 {
   setImage() ;
 }
 
 void Knight::setImage()
 {
-  if(getcolor() == "white")
+  if(getColor() == "White")
   {
-    setPixmap(QPixmap(":/images/horse1.png") ) ;
+    setPixmap(QPixmap(":/images/White/knight.png") ) ;
   }
   else
   {
-    setPixmap(QPixmap(":/images/horse.png") ) ;
+    setPixmap(QPixmap(":/images/Black/knight.png") ) ;
   }
 }
 
@@ -28,31 +24,26 @@ void Knight::moves(Cell * cb[][8])
   int row = getCell()->row ;
   int column = getCell()->column ;
   int i , j ;
-
-  //There are total 8 places where a night can move
-  //1st up up left
   i = row - 2 ;
   j = column - 1 ;
-  if(i >= 0 && j>= 0 && (cb[i][j]->getpiececolor() != getcolor() )
+  if(i >= 0 && j>= 0 && (cb[i][j]->getPieceColor() != getColor() ))
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
-      cells.last()->setcolor(Qt::red) ;
+      cells.last()->setColor(Qt::red) ;
     }
     else
     {
-      cells.last()->setcolor(Qt::darkRed) ;
+      cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //2nd up up right
   i = row - 2 ;
   j = column + 1 ;
-  if(i >= 0 && j <= 7 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i >= 0 && j < 8 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -61,14 +52,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //3rd down down left
   i = row + 2 ;
   j = column - 1 ;
-  if(i <= 7 && j >= 0 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i < 8 && j >= 0 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -77,14 +66,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //4th  down down right
   i = row + 2 ;
   j = column + 1 ;
-  if(i <= 7 && j <= 7 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i < 8 && j < 8 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -93,14 +80,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //5th left left up
   i = row - 1 ;
   j = column - 2 ;
-  if(i >= 0 && j >= 0 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i >= 0 && j >= 0 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -109,14 +94,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //6th left left down
   i = row + 1 ;
   j = column - 2 ;
-  if(i <= 7 && j >= 0 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i < 8 && j >= 0 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -125,14 +108,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //7th right right up
   i = row - 1 ;
   j = column + 2 ;
-  if(i >= 0 && j <= 7 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i >= 0 && j < 8 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
@@ -141,14 +122,12 @@ void Knight::moves(Cell * cb[][8])
       cells.last()->setColor(Qt::darkRed) ;
     }
   }
-
-  //8th right right down
   i = row + 1 ;
   j = column + 2 ;
-  if(i <= 7 && j <= 7 && (cb[i][j]->getpiececolor() != getcolor() ) )
+  if(i < 8 && j < 8 && (cb[i][j]->getPieceColor() != getColor() ) )
   {
     cells.append(cb[i][j]) ;
-    if(cells.last()->haspiece() )
+    if(cells.last()->hasPiece() )
     {
       cells.last()->setColor(Qt::red) ;
     }
