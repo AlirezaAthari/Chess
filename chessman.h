@@ -25,7 +25,7 @@ public:
     bool getPiecePlaced();
     bool cellColorise(Cell *);
     void cellDecolor();
-    bool firstMove;
+    bool firstmove ;
 
     protected:
     QString color;

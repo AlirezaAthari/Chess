@@ -96,4 +96,3 @@ void chessman::setSymbol(QChar s)
 {
     symbol = s;
 }
-
