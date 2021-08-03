@@ -12,6 +12,11 @@ Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
     setZValue(-1);
 }
 
+void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+
+}
+
 void Cell::setOccupied(bool o)
 {
     occupied = o;

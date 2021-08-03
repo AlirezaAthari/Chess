@@ -2,6 +2,7 @@
 #include <QAbstractScrollArea>
 #include "ui_game.h"
 #include "chessboard.h"
+#include "globals.h"
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)

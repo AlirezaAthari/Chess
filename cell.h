@@ -8,6 +8,7 @@ class Cell : public QGraphicsRectItem
 {
 public:
     Cell(QGraphicsItem *parent = nullptr);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void setOccupied(bool);
     void setAddress(QString);
     void setPiece(chessman *);

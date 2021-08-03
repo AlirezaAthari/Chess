@@ -28,6 +28,7 @@ HEADERS += \
     chessboard.h \
     chessman.h \
     game.h \
+    globals.h \
     king.h \
     knight.h \
     login.h \

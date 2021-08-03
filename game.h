@@ -26,9 +26,7 @@ public:
     void addPiece();
     void reset();
     void endGame();
-    Cell * chessBoard[8][8];
     QList <chessman *> alives;
-    chessman * movingPiece;
     Game(QWidget *parent = nullptr);
     ~Game();
 
