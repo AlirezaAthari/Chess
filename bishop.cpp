@@ -1,5 +1,5 @@
 #include "bishop.h"
-
+//this is just a test for changing commit massage ;
 
 Bishop::Bishop(QString color , QGraphicsItem *parent):chessman(color , 'B' , parent)
 {
