@@ -1,9 +1,10 @@
 #include "cell.h"
+#include "qdebug.h"
 
 Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
+
     setAddress("NONE");
-    setPiece(NULL);
     setOccupied(false);
     setPieceColor("NONE");
     piece = NULL;
@@ -62,7 +63,7 @@ QString Cell::getAddress()
 
 QString Cell::getPieceColor()
 {
-    return piece->getColor();
+    return pieceColor;
 }
 
 bool Cell::hasPiece()

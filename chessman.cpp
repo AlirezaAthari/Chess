@@ -1,4 +1,5 @@
 #include "chessman.h"
+#include "globals.h"
 chessman::chessman(QString color  , QChar symbol ,QGraphicsItem *parent) :QGraphicsPixmapItem(parent)
 {
     this->color = color;
@@ -9,28 +10,28 @@ chessman::chessman(QString color  , QChar symbol ,QGraphicsItem *parent) :QGraph
 
 void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(globalcontainer::movingPiece == this)
+    if(movingPiece == this)
     {
-        globalcontainer::movingPiece->cellDecolor();
-        globalcontainer::movingPiece->getCell()->resetCellColor();
-        globalcontainer::movingPiece = nullptr;
+        movingPiece->cellDecolor();
+        movingPiece->getCell()->resetCellColor();
+        movingPiece = nullptr;
         return;
     }
 
-    if ((!this->getPiecePlaced()) && !globalcontainer::movingPiece)
+    if ((!this->getPiecePlaced()) && !movingPiece)
     {
         return;
     }
 
-    if (!globalcontainer::movingPiece)
+    if (!movingPiece)
     {
-        globalcontainer::movingPiece = this;
-        globalcontainer::movingPiece->getCell()->setColor(Qt::red);
-        globalcontainer::movingPiece->moves(globalcontainer::chessBoard);
+        movingPiece = this;
+        movingPiece->getCell()->setColor(Qt::red);
+        movingPiece->moves(chessBoard);
         return;
     }
 
-    else if(this->getColor() != globalcontainer::movingPiece->getColor())
+    else if(this->getColor() != movingPiece->getColor())
     {
         this->getCell()->mousePressEvent(event);
     }

@@ -7,7 +7,7 @@ class ChessBoard
 {
 public:
     ChessBoard();
-    QVector<QVector<Cell *>> drawBoard(int x, int y);
+    void drawBoard(QVector<QVector<Cell *>> &  ,int , int );
     QString movePiece();
 private:
 };

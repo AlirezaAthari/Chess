@@ -4,7 +4,6 @@
 #include <QGraphicsView>
 #include "chessboard.h"
 #include "cell.h"
-#include "globals.h"
 #include <QAbstractScrollArea>
 #include "ui_game.h"
 #include "chessboard.h"
@@ -52,7 +51,7 @@ private:
     QString title;
     QString turn = "White";
     ChessBoard * cb;
-    QGraphicsScene chessScene;
+    QGraphicsScene *chessScene;
     QList <chessman *> whites;
     QList <chessman *> blacks;
     QList <chessman *> blackDeaths;

@@ -1,4 +1,6 @@
 #include "game.h"
+#include "qdebug.h"
+#include "globals.h"
 
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
@@ -97,18 +99,18 @@ void Game::addPiece()
         for(int j = 0; j < 8; j++)
         {
 
-            Cell *c =globalcontainer::chessBoard[i][j];
+            Cell *c =chessBoard[i][j];
             if(i < 2) {
                 static int m;
                 c->setPiece(blacks[m]);
                 alives.append(blacks[m]);
-                chessScene.addItem(blacks[m++]);
+                chessScene->addItem(blacks[m++]);
             }
             if(i > 5) {
                 static int n;
                 c->setPiece(whites[n]);
                 alives.append(whites[n]);
-                chessScene.addItem(whites[n++]);
+                chessScene->addItem(whites[n++]);
             }
         }
     }
@@ -122,7 +124,7 @@ void Game::reset()
         for(int j = 0; j < 8; j++)
         {
 
-            Cell *c = globalcontainer::chessBoard[i][j];
+            Cell *c = chessBoard[i][j];
             c->setOccupied(false);
             c->setPieceColor("NONE");
             c->piece = NULL;
@@ -167,7 +169,6 @@ void Game::setWhite(const QString & w)
 
 void Game::setBoard()
 {
-
     alives.clear();
     whiteDeaths.clear();
     blackDeaths.clear();
@@ -176,18 +177,19 @@ void Game::setBoard()
     blacks.clear();
     cb = new ChessBoard;
     QVector<QVector<Cell *>> board;
-    board = cb->drawBoard(0,0);
-    setBlackMans();
-    setWhiteMans();
+    board.resize(64);
+    cb->drawBoard(board,270,0);
     for (size_t i = 0 ; i < 8 ; i++ )
     {
         for (size_t j = 0; j< 8 ; j++)
         {
-            chessScene.addItem(board[i][j]);
-            globalcontainer::chessBoard[i][j] = board[i][j];
+            chessScene->addItem(board[i][j]);
+            chessBoard[i][j] = board.at(i).at(j);
         }
     }
-    QGraphicsView c(&chessScene);
+    setBlackMans();
+    setWhiteMans();
+    QGraphicsView c(chessScene);
     ui->chessboardscene = &c;
     ui->chessboardscene->show();
 }

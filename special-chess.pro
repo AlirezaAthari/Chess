@@ -13,6 +13,7 @@ SOURCES += \
     cell.cpp \
     chessboard.cpp \
     chessman.cpp \
+    globals.cpp \
     king.cpp \
     knight.cpp \
     login.cpp \

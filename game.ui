@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1169</width>
-    <height>1112</height>
+    <height>948</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -431,7 +431,7 @@ border-radius: 15px;
       <x>10</x>
       <y>650</y>
       <width>1151</width>
-      <height>401</height>
+      <height>241</height>
      </rect>
     </property>
     <property name="title">
@@ -441,7 +441,7 @@ border-radius: 15px;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>190</y>
+       <y>110</y>
        <width>1111</width>
        <height>20</height>
       </rect>
@@ -454,9 +454,9 @@ border-radius: 15px;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>210</y>
+       <y>140</y>
        <width>1111</width>
-       <height>171</height>
+       <height>81</height>
       </rect>
      </property>
     </widget>
@@ -466,7 +466,7 @@ border-radius: 15px;
        <x>20</x>
        <y>20</y>
        <width>1111</width>
-       <height>171</height>
+       <height>81</height>
       </rect>
      </property>
     </widget>
