@@ -20,7 +20,7 @@ public:
     bool hasPiece();
     chessman * piece;
     int row;
-    char column;
+    int column;
 
 private:
       bool occupied;

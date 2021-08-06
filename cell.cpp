@@ -3,12 +3,11 @@
 
 Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
-
+    setRect(0,0,80,80);
     setAddress("NONE");
     setOccupied(false);
     setPieceColor("NONE");
     piece = NULL;
-    setRect(0,0,80,80);
     brush.setStyle(Qt::SolidPattern);
     setZValue(-1);
 }

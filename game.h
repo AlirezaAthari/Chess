@@ -13,6 +13,7 @@
 #include "queen.h"
 #include "knight.h"
 #include "rook.h"
+#include <QGraphicsScene>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }

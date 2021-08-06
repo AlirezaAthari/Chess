@@ -11,6 +11,8 @@ Game::Game(QWidget *parent)
     ui->player_2->setText(black);
     ui->player_1->setText(white);
     ui->turn->setText(turn);
+    chessScene = new QGraphicsScene;
+    ui->chessboardscene->setScene(chessScene);
     setBoard();
 }
 
@@ -104,13 +106,17 @@ void Game::addPiece()
                 static int m;
                 c->setPiece(blacks[m]);
                 alives.append(blacks[m]);
-                chessScene->addItem(blacks[m++]);
+                QGraphicsItem * p = blacks[m];
+                m++;
+                chessScene->addItem(p);
             }
             if(i > 5) {
                 static int n;
                 c->setPiece(whites[n]);
                 alives.append(whites[n]);
-                chessScene->addItem(whites[n++]);
+                QGraphicsItem * p = whites[n];
+                n++;
+                chessScene->addItem(p);
             }
         }
     }
@@ -175,23 +181,32 @@ void Game::setBoard()
     turn="White";
     whites.clear();
     blacks.clear();
-    cb = new ChessBoard;
+    cb = new ChessBoard();
     QVector<QVector<Cell *>> board;
     board.resize(64);
     cb->drawBoard(board,270,0);
+//    for (size_t i = 0 ; i < 8 ; i++ ) //for test
+//    {
+//        for (size_t j = 0; j< 8 ; j++)
+//        {
+//            Cell * c = board[i][j];
+//            qDebug() << c->getAddress() << c->getPieceColor() << c->row << c->column;
+//        }
+//    }
     for (size_t i = 0 ; i < 8 ; i++ )
     {
         for (size_t j = 0; j< 8 ; j++)
         {
-            chessScene->addItem(board[i][j]);
-            chessBoard[i][j] = board.at(i).at(j);
+            QGraphicsItem * c = board[i][j];
+            chessScene->addItem(c);
+            chessBoard[i][j] = board[i][j];
         }
     }
     setBlackMans();
     setWhiteMans();
-    QGraphicsView c(chessScene);
+    /*QGraphicsView c(chessScene);
     ui->chessboardscene = &c;
-    ui->chessboardscene->show();
+    ui->chessboardscene->show();*/
 }
 
 void Game::setTitle(const QString & t)
