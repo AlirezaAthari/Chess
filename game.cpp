@@ -216,16 +216,10 @@ void Game::setTitle(const QString & t)
 
 void Game::changeTurn()
 {
-    if(getTurn() == "Black")
+    if(turn == "Black")
         turn = "White";
     else turn = "Black";
 }
-
-QString Game::getTurn()
-{
-    return  turn;
-}
-
 void Game::on_pushButton_clicked() //undo
 {
 

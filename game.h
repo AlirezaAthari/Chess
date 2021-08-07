@@ -29,7 +29,6 @@ public:
     void setWhite(const QString &);
     void setBlack(const QString &);
     void changeTurn ();
-    QString getTurn();
     void setWhiteMans();
     void setBlackMans();
     void addPieceToDeaths(chessman *);
@@ -50,7 +49,6 @@ private:
     QString black;
     QString white;
     QString title;
-    QString turn = "White";
     ChessBoard * cb;
     QGraphicsScene *chessScene;
     QList <chessman *> whites;

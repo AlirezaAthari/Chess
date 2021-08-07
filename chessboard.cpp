@@ -14,9 +14,9 @@ void ChessBoard::drawBoard(QVector<QVector<Cell *>> & cells ,int x, int y)
         {
             Cell *c = new Cell();
             if((i+j)%2==0)
-            c->setColor(QColor(102 , 51 , 0));
+            c->setCellColor(QColor(102 , 51 , 0));
             else
-            c->setColor(QColor(255 , 153 , 51));
+            c->setCellColor(QColor(255 , 153 , 51));
             c->setPos(x+j*80,y+i*80);
             c->row = i;
             c->column = j;

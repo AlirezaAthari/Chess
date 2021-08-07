@@ -45,6 +45,12 @@ void Cell::setColor(QColor color)
     setBrush(color);
 }
 
+void Cell::setCellColor(QColor c)
+{
+    cellColor = c;
+    setColor(c);
+}
+
 void Cell::resetCellColor()
 {
     setColor(cellColor);

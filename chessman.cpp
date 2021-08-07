@@ -18,7 +18,7 @@ void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
         return;
     }
 
-    if ((!this->getPiecePlaced()) && !movingPiece)
+    if ((!this->getPiecePlaced()) || ((!movingPiece) && (turn != this->getColor())))
     {
         return;
     }

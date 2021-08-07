@@ -13,6 +13,7 @@ public:
     void setAddress(QString);
     void setPiece(chessman *);
     void setColor(QColor);
+    void setCellColor (QColor);
     void resetCellColor();
     void setPieceColor(QString);
     QString getAddress();
