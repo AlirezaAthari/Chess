@@ -69,31 +69,31 @@ void Game::setBlackMans()
         }
 }
 
-void Game::addPieceToDeaths(chessman * p)
-{
-    if(p->getColor() == "White") {
-        whiteDeaths.append(p);
-        for(size_t i = 0 , j = 0 , k = 0 ; i<whiteDeaths.size(); i++) {
-                if(j == 16){
-                    k++;
-                    j = 0;
-                }
-                whiteDeaths[i]->setPos(30 + 50*j++,670 + 100*k);
-        }
-    }
-    else{
-        blackDeaths.append(p);
-        for(size_t i = 0 , j = 0 , k = 0; i<blackDeaths.size(); i++) {
-            if(j == 4){
-                k++;
-                j = 0;
-            }
-            blackDeaths[i]->setPos(30 + 50*j++,880 + 100*k);
-        }
-    }
-    alives.removeOne(p);
+//void Game::addPieceToDeaths(chessman * p)
+//{
+//    if(p->getColor() == "White") {
+//        whiteDeaths.append(p);
+//        for(size_t i = 0 , j = 0 , k = 0 ; i<whiteDeaths.size(); i++) {
+//                if(j == 16){
+//                    k++;
+//                    j = 0;
+//                }
+//                whiteDeaths[i]->setPos(30 + 50*j++,720 + 100*k);
+//        }
+//    }
+//    else{
+//        blackDeaths.append(p);
+//        for(size_t i = 0 , j = 0 , k = 0; i<blackDeaths.size(); i++) {
+//            if(j == 4){
+//                k++;
+//                j = 0;
+//            }
+//            blackDeaths[i]->setPos(600 + 50*j++,720 + 100*k);
+//        }
+//    }
+//    alives.removeOne(p);
 
-}
+//}
 
 void Game::addPiece()
 {
@@ -175,12 +175,6 @@ void Game::setWhite(const QString & w)
 
 void Game::setBoard()
 {
-    alives.clear();
-    whiteDeaths.clear();
-    blackDeaths.clear();
-    turn="White";
-    whites.clear();
-    blacks.clear();
     cb = new ChessBoard();
     QVector<QVector<Cell *>> board;
     board.resize(64);
@@ -213,21 +207,33 @@ void Game::setTitle(const QString & t)
 {
     title = t;
 }
-
-void Game::changeTurn()
-{
-    if(turn == "Black")
-        turn = "White";
-    else turn = "Black";
-}
-void Game::on_pushButton_clicked() //undo
+void Game::on_undoPushButton_clicked() //undo
 {
 
 }
 
 
-void Game::on_pushButton_2_clicked() //start
+void Game::on_startPushButton_clicked() //start
 {
-    setBoard();
-    addPiece();
+    if(!startGame)
+    {
+        startGame = true;
+        setBoard();
+        addPiece();
+    }
 }
+
+void Game::on_resetPushButton_clicked()
+{
+    if(startGame)
+    {
+        resetGame = true;
+        alives.clear();
+        turn="White";
+        whites.clear();
+        blacks.clear();
+        setBoard();
+        addPiece();
+    }
+}
+

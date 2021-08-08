@@ -9,6 +9,7 @@ class Cell : public QGraphicsRectItem
 public:
     Cell(QGraphicsItem *parent = nullptr);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void addPieceToDeaths(chessman *);
     void setOccupied(bool);
     void setAddress(QString);
     void setPiece(chessman *);
@@ -24,7 +25,9 @@ public:
     int column;
 
 private:
-      bool occupied;
+    QList <chessman *> blackDeaths;
+    QList <chessman *> whiteDeaths;
+    bool occupied;
     QString address;
     QBrush brush;
     QColor cellColor;

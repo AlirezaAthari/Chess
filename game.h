@@ -28,21 +28,21 @@ public:
     void setTitle(const QString &);
     void setWhite(const QString &);
     void setBlack(const QString &);
-    void changeTurn ();
     void setWhiteMans();
     void setBlackMans();
     void addPieceToDeaths(chessman *);
     void addPiece();
     void reset();
     void endGame();
-    QList <chessman *> alives;
     Game(QWidget *parent = nullptr);
     ~Game();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_startPushButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_undoPushButton_clicked();
+
+    void on_resetPushButton_clicked();
 
 private:
     Ui::Game *ui;
@@ -52,8 +52,8 @@ private:
     ChessBoard * cb;
     QGraphicsScene *chessScene;
     QList <chessman *> whites;
-    QList <chessman *> blacks;
+    QList <chessman *> blacks;/*
     QList <chessman *> blackDeaths;
-    QList <chessman *> whiteDeaths;
+    QList <chessman *> whiteDeaths;*/
 };
 #endif // GAME_H

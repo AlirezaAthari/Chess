@@ -1,5 +1,6 @@
 #include "chessman.h"
 #include "globals.h"
+#include "QDebug"
 chessman::chessman(QString color  , QChar symbol ,QGraphicsItem *parent) :QGraphicsPixmapItem(parent)
 {
     this->color = color;
@@ -74,13 +75,16 @@ bool chessman::getPiecePlaced()
 
 bool chessman::cellColorise(Cell * c)
 {
-    if (!c->hasPiece())
+    if (c->hasPiece())
     {
-        cells.last()->setColor(Qt::red);
+        c->setColor(Qt::red);
+        return true;
+    }
+    else
+    {
+        cells.last()->setColor(Qt::darkRed);
         return false;
     }
-    c->setColor(Qt::darkRed);
-    return true;
 }
 
 void chessman::cellDecolor()

@@ -19,7 +19,7 @@ public:
     QString getColor();
     QChar getSymbol();
     virtual void setImage() = 0;
-    QList <Cell *> moveCells();
+    QList <Cell *> moveCells;
     virtual void moves(Cell * cb[][8]) = 0;
     void setPiecePlaced(bool);
     bool getPiecePlaced();
