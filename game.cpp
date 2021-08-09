@@ -69,32 +69,6 @@ void Game::setBlackMans()
         }
 }
 
-//void Game::addPieceToDeaths(chessman * p)
-//{
-//    if(p->getColor() == "White") {
-//        whiteDeaths.append(p);
-//        for(size_t i = 0 , j = 0 , k = 0 ; i<whiteDeaths.size(); i++) {
-//                if(j == 16){
-//                    k++;
-//                    j = 0;
-//                }
-//                whiteDeaths[i]->setPos(30 + 50*j++,720 + 100*k);
-//        }
-//    }
-//    else{
-//        blackDeaths.append(p);
-//        for(size_t i = 0 , j = 0 , k = 0; i<blackDeaths.size(); i++) {
-//            if(j == 4){
-//                k++;
-//                j = 0;
-//            }
-//            blackDeaths[i]->setPos(600 + 50*j++,720 + 100*k);
-//        }
-//    }
-//    alives.removeOne(p);
-
-//}
-
 void Game::addPiece()
 {
     for(int i = 0; i < 8; i++) {
@@ -179,14 +153,6 @@ void Game::setBoard()
     QVector<QVector<Cell *>> board;
     board.resize(64);
     cb->drawBoard(board,270,0);
-//    for (size_t i = 0 ; i < 8 ; i++ ) //for test
-//    {
-//        for (size_t j = 0; j< 8 ; j++)
-//        {
-//            Cell * c = board[i][j];
-//            qDebug() << c->getAddress() << c->getPieceColor() << c->row << c->column;
-//        }
-//    }
     for (size_t i = 0 ; i < 8 ; i++ )
     {
         for (size_t j = 0; j< 8 ; j++)
@@ -198,9 +164,6 @@ void Game::setBoard()
     }
     setBlackMans();
     setWhiteMans();
-    /*QGraphicsView c(chessScene);
-    ui->chessboardscene = &c;
-    ui->chessboardscene->show();*/
 }
 
 void Game::setTitle(const QString & t)

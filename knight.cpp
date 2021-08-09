@@ -20,7 +20,6 @@ void Knight::setImage()
 
 void Knight::moves(Cell * cb[][8])
 {
-  cells.clear() ;
   int row = getCell()->row ;
   int column = getCell()->column ;
   int i , j ;

@@ -29,17 +29,19 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
     if(movingPiece)
     {
-
         if(getPieceColor() == movingPiece->getColor())
             return;
         unsigned int temp = 0;
-        for(size_t i = 0 ; i < piece->moveCells.size() ; i++)
+        QList <Cell * > moves = movingPiece->getCells();
+
+        for(size_t i = 0 ; i < moves.size() ; i++)
         {
-            if(this == piece->moveCells.at(i))
+            if(this == moves.at(i))
                 temp++;
         }
         if (temp == 0)
             return;
+        changeTurn();
         movingPiece->cellDecolor();
         movingPiece->firstmove = false;
         if(this->hasPiece())
@@ -48,10 +50,13 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
             this->piece->setCell(nullptr);
             addPieceToDeaths(this->piece);
         }
+        movingPiece->getCell()->setOccupied(false);
+        movingPiece->getCell()->resetCellColor();
+        movingPiece->getCell()->piece = nullptr;
+        setPiece(movingPiece);
+        movingPiece = nullptr;
 
     }
-
-
 }
 
 void Cell::addPieceToDeaths(chessman * p)

@@ -29,7 +29,6 @@ void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece = this;
         movingPiece->getCell()->setColor(Qt::red);
         movingPiece->moves(chessBoard);
-        return;
     }
 
     else if(this->getColor() != movingPiece->getColor())
@@ -61,6 +60,11 @@ QString chessman::getColor()
 QChar chessman::getSymbol()
 {
     return symbol;
+}
+
+QList<Cell *> chessman::getCells()
+{
+    return cells;
 }
 
 void chessman::setPiecePlaced(bool p)
