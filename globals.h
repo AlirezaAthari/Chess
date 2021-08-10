@@ -4,6 +4,7 @@
 #include "chessman.h"
 #include "cell.h"
 extern int replacePawnChoose;
+extern QVector <QString> movesSeries;
 extern QList <chessman *> blackDeaths;
 extern QList <chessman *> whiteDeaths;
 extern bool startGame;

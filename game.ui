@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Game</class>
  <widget class="QMainWindow" name="Game">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1635</width>
+    <height>1010</height>
+   </rect>
+  </property>
   <property name="minimumSize">
    <size>
     <width>1635</width>
@@ -142,7 +150,7 @@ qproperty-alignment: AlignCenter;
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="undoPushButton">
      <property name="geometry">
       <rect>
        <x>50</x>

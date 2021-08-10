@@ -15,6 +15,7 @@
 #include "rook.h"
 #include <QGraphicsScene>
 #include "qabstractscrollarea.h"
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -41,7 +42,6 @@ private slots:
     void on_undoPushButton_clicked();
 
     void on_resetPushButton_clicked();
-
 private:
     Ui::Game *ui;
     ChessBoard * cb;

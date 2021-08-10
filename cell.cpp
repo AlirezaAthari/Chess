@@ -30,13 +30,13 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
     if(movingPiece)
     {
-//        Pawn * p = dynamic_cast<Pawn *>(movingPiece);
-//        if (p)
+//        if (movingPiece->getSymbol() == "P")
 //        {
 //            ReplacePawn *rp;
 //            rp = new ReplacePawn;
 //            rp->show();
 //        }
+        QString movingSerial = "";
 
         if(getPieceColor() == movingPiece->getColor())
             return;
@@ -51,6 +51,12 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if (temp == 0)
             return;
         changeTurn();
+        if(movingPiece->getColor() == "White")
+            movingSerial.append("W");
+        else
+            movingSerial.append("B");
+        movingSerial.append(movingPiece->getSymbol());
+        movingSerial.append( "R" + QString::number(movingPiece->getCell()->row) + "C" + QString::number(movingPiece->getCell()->column));
         movingPiece->cellDecolor();
         movingPiece->firstmove = false;
         if(this->hasPiece())
@@ -58,11 +64,16 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
             this->setOccupied(false);
             this->piece->setCell(nullptr);
             addPieceToDeaths(this->piece);
+            movingSerial.append(this->piece->getSymbol());
         }
+        else
+            movingSerial.append("N");
         movingPiece->getCell()->setOccupied(false);
         movingPiece->getCell()->resetCellColor();
         movingPiece->getCell()->piece = nullptr;
         setPiece(movingPiece);
+        movingSerial.append("R" + QString::number(movingPiece->getCell()->row) + "C" + QString::number(movingPiece->getCell()->column));
+        movesSeries.append(movingSerial);
         movingPiece = nullptr;
 
     }

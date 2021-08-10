@@ -1,5 +1,6 @@
 #include "globals.h"
 int replacePawnChoose = 0;
+QVector <QString> movesSeries = {};
 bool startGame = false;
 bool resetGame = false;
 QList <chessman *> blackDeaths = {};

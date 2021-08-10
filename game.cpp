@@ -164,6 +164,47 @@ void Game::setBoard()
 
 void Game::on_undoPushButton_clicked() //undo
 {
+    QString lastMove = movesSeries.last();
+    if(lastMove == NULL)
+        return;
+    QString piece;
+    QString destination;
+    QString origin;
+    QString deathPiece;
+    for (int i = 0; i < lastMove.size() ; i++ )
+    {
+        if(i<2)
+            piece.append(lastMove.at(i));
+        else if (i>1 && i<6)
+            destination.append(lastMove.at(i));
+        else if (i == 6)
+            deathPiece.append(lastMove.at(i));
+        else origin.append(lastMove.at(i));
+    }
+    int i = static_cast<QString>(origin[1]).toInt();
+    int j = static_cast<QString>(origin[3]).toInt();
+    int m = static_cast<QString>(destination[1]).toInt();
+    int n = static_cast<QString>(destination[3]).toInt();
+    chessBoard[i][j]->setOccupied(false);
+    chessBoard[m][n]->setPiece(chessBoard[i][j]->piece);
+    chessBoard[i][j]->piece = nullptr;
+    changeTurn();
+    if(deathPiece == "N")
+        return;
+    else
+    {
+        if(piece[0] == "W")
+        {
+            chessBoard[i][j]->setPiece(blackDeaths.last());
+            blackDeaths.pop_back();
+        }
+        else
+        {
+            chessBoard[i][j]->setPiece(whiteDeaths.last());
+            whiteDeaths.pop_back();
+        }
+        chessBoard[i][j]->setOccupied(true);
+    }
 
 }
 
@@ -192,4 +233,3 @@ void Game::on_resetPushButton_clicked()
         addPiece();
     }
 }
-
