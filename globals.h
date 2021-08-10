@@ -3,7 +3,7 @@
 
 #include "chessman.h"
 #include "cell.h"
-
+extern int replacePawnChoose;
 extern QList <chessman *> blackDeaths;
 extern QList <chessman *> whiteDeaths;
 extern bool startGame;

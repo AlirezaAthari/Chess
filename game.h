@@ -26,16 +26,13 @@ class Game : public QMainWindow
 
 public:
     void setBoard();
-    void setTitle(const QString &);
-    void setWhite(const QString &);
-    void setBlack(const QString &);
     void setWhiteMans();
     void setBlackMans();
     void addPieceToDeaths(chessman *);
     void addPiece();
     void reset();
     void endGame();
-    Game(QWidget *parent = nullptr);
+    Game(QString , QString  ,QString , QWidget *parent = nullptr);
     ~Game();
 
 private slots:
@@ -47,9 +44,6 @@ private slots:
 
 private:
     Ui::Game *ui;
-    QString black;
-    QString white;
-    QString title;
     ChessBoard * cb;
     QVector<QVector<Cell *>> board;
     QGraphicsScene *chessScene;

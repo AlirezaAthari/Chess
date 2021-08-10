@@ -2,6 +2,7 @@
 #include "qdebug.h"
 #include "globals.h"
 #include "chessman.h"
+#include "pawn.h"
 
 Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
@@ -9,6 +10,7 @@ Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
     {
         whiteDeaths.clear();
         blackDeaths.clear();
+        resetGame = false;
     }
     setRect(0,0,120,120);
     setAddress("NONE");
@@ -21,7 +23,6 @@ Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
 
 void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-
     if(piece && piece == movingPiece)
     {
         piece->mousePressEvent(event);
@@ -29,6 +30,14 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
     if(movingPiece)
     {
+//        Pawn * p = dynamic_cast<Pawn *>(movingPiece);
+//        if (p)
+//        {
+//            ReplacePawn *rp;
+//            rp = new ReplacePawn;
+//            rp->show();
+//        }
+
         if(getPieceColor() == movingPiece->getColor())
             return;
         unsigned int temp = 0;

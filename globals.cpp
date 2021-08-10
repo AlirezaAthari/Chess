@@ -1,4 +1,5 @@
 #include "globals.h"
+int replacePawnChoose = 0;
 bool startGame = false;
 bool resetGame = false;
 QList <chessman *> blackDeaths = {};

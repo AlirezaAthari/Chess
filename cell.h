@@ -3,6 +3,8 @@
 #include <qbrush.h>
 #include "chessman.h"
 #include "QGraphicsRectItem"
+#include "replacepawn.h"
+
 class chessman;
 class Cell : public QGraphicsRectItem
 {

@@ -1,4 +1,5 @@
 #include "login.h"
+#include "qdebug.h"
 
 Login::Login(QWidget *parent) :
     QDialog(parent),
@@ -14,13 +15,10 @@ Login::~Login()
 
 void Login::on_pushButton_clicked()
 {
-    g = new Game(this);
-    g->show();
     QString b = ui->black->text();
     QString w = ui->white->text();
     QString t = ui->title->text();
-    g->setBlack(b);
-    g->setWhite(w);
-    g->setTitle(t);
+    g = new Game(t , w , b , this);
+    g->show();
     hide();
 }

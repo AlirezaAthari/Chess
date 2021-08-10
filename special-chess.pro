@@ -21,6 +21,7 @@ SOURCES += \
     game.cpp \
     pawn.cpp \
     queen.cpp \
+    replacepawn.cpp \
     rook.cpp
 
 HEADERS += \
@@ -35,11 +36,13 @@ HEADERS += \
     login.h \
     pawn.h \
     queen.h \
+    replacepawn.h \
     rook.h
 
 FORMS += \
     game.ui \
-    login.ui
+    login.ui \
+    replacepawn.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

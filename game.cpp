@@ -2,22 +2,20 @@
 #include "qdebug.h"
 #include "globals.h"
 
-Game::Game(QWidget *parent)
+Game::Game(QString t , QString w ,QString b , QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Game)
 {
-
     ui->setupUi(this);
-    ui->title->setText(title);
-    ui->player_2->setText(black);
-    ui->player_1->setText(white);
+    ui->title->setText(t);
+    ui->player_1->setText(w);
+    ui->player_2->setText(b);
     ui->turn->setText(turn);
     chessScene = new QGraphicsScene;
     chessScene->setSceneRect(0 , 0 , 1371 , 960);
     ui->chessboardscene->setScene(chessScene);
     ui->chessboardscene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->chessboardscene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
     setBoard();
 }
 
@@ -37,9 +35,9 @@ void Game::setWhiteMans()
     whites.append(piece);
     piece = new Bishop("White");
     whites.append(piece);
-    piece = new Queen("White");
-    whites.append(piece);
     piece = new King("White");
+    whites.append(piece);
+    piece = new Queen("White");
     whites.append(piece);
     piece = new Bishop("White");
     whites.append(piece);
@@ -58,9 +56,9 @@ void Game::setBlackMans()
     blacks.append(piece);
     piece = new Bishop("Black");
     blacks.append(piece);
-    piece = new Queen("Black");
-    blacks.append(piece);
     piece = new King("Black");
+    blacks.append(piece);
+    piece = new Queen("Black");
     blacks.append(piece);
     piece = new Bishop("Black");
     blacks.append(piece);
@@ -146,16 +144,6 @@ Game::~Game()
     delete ui;
 }
 
-void Game::setBlack(const QString & b)
-{
-    black = b;
-}
-
-void Game::setWhite(const QString & w)
-{
-    white = w;
-}
-
 void Game::setBoard()
 {
     cb = new ChessBoard();
@@ -174,10 +162,6 @@ void Game::setBoard()
     setWhiteMans();
 }
 
-void Game::setTitle(const QString & t)
-{
-    title = t;
-}
 void Game::on_undoPushButton_clicked() //undo
 {
 
