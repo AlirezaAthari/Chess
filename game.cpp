@@ -83,6 +83,8 @@ void Game::addPiece()
             Cell *c =chessBoard[i][j];
             if(i < 2) {
                 static int m;
+                if (m == 16)
+                    m = 0;
                 c->setPiece(blacks[m]);
                 alives.append(blacks[m]);
                 QGraphicsItem * p = blacks[m];
@@ -91,6 +93,8 @@ void Game::addPiece()
             }
             if(i > 5) {
                 static int n;
+                if (n == 16)
+                    n = 0;
                 c->setPiece(whites[n]);
                 alives.append(whites[n]);
                 QGraphicsItem * p = whites[n];
@@ -155,7 +159,6 @@ void Game::setWhite(const QString & w)
 void Game::setBoard()
 {
     cb = new ChessBoard();
-    QVector<QVector<Cell *>> board;
     board.resize(64);
     cb->drawBoard(board,205,0);
     for (size_t i = 0 ; i < 8 ; i++ )
@@ -186,7 +189,6 @@ void Game::on_startPushButton_clicked() //start
     if(!startGame)
     {
         startGame = true;
-        setBoard();
         addPiece();
     }
 }
@@ -200,6 +202,8 @@ void Game::on_resetPushButton_clicked()
         turn="White";
         whites.clear();
         blacks.clear();
+        board.clear();
+        chessScene->clear();
         setBoard();
         addPiece();
     }

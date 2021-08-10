@@ -51,6 +51,7 @@ private:
     QString white;
     QString title;
     ChessBoard * cb;
+    QVector<QVector<Cell *>> board;
     QGraphicsScene *chessScene;
     QList <chessman *> whites;
     QList <chessman *> blacks;
