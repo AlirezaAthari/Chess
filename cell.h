@@ -25,8 +25,6 @@ public:
     int column;
 
 private:
-    QList <chessman *> blackDeaths;
-    QList <chessman *> whiteDeaths;
     bool occupied;
     QString address;
     QBrush brush;

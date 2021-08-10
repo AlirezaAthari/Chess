@@ -14,6 +14,7 @@
 #include "knight.h"
 #include "rook.h"
 #include <QGraphicsScene>
+#include "qabstractscrollarea.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -52,8 +53,6 @@ private:
     ChessBoard * cb;
     QGraphicsScene *chessScene;
     QList <chessman *> whites;
-    QList <chessman *> blacks;/*
-    QList <chessman *> blackDeaths;
-    QList <chessman *> whiteDeaths;*/
+    QList <chessman *> blacks;
 };
 #endif // GAME_H

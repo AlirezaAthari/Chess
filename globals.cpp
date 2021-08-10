@@ -1,8 +1,10 @@
 #include "globals.h"
 bool startGame = false;
 bool resetGame = false;
-QList <chessman *> alives = {0};
-Cell * chessBoard[8][8] = {0};
+QList <chessman *> blackDeaths = {};
+QList <chessman *> whiteDeaths = {};
+QList <chessman *> alives = {};
+Cell * chessBoard[8][8] = {};
 chessman * movingPiece = nullptr;
 QString turn = "White";
 void changeTurn ()

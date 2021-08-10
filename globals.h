@@ -4,6 +4,8 @@
 #include "chessman.h"
 #include "cell.h"
 
+extern QList <chessman *> blackDeaths;
+extern QList <chessman *> whiteDeaths;
 extern bool startGame;
 extern bool resetGame;
 extern Cell * chessBoard[8][8];

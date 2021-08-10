@@ -17,7 +17,7 @@ void ChessBoard::drawBoard(QVector<QVector<Cell *>> & cells ,int x, int y)
             c->setCellColor(QColor(102 , 51 , 0));
             else
             c->setCellColor(QColor(255 , 153 , 51));
-            c->setPos(x+j*80,y+i*80);
+            c->setPos(x+j*120,y+i*120);
             c->row = i;
             c->column = j;
             cells[i].append(c);

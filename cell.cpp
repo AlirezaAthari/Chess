@@ -10,7 +10,7 @@ Cell::Cell( QGraphicsItem *parent):QGraphicsRectItem(parent)
         whiteDeaths.clear();
         blackDeaths.clear();
     }
-    setRect(0,0,80,80);
+    setRect(0,0,120,120);
     setAddress("NONE");
     setOccupied(false);
     setPieceColor("NONE");
@@ -63,25 +63,29 @@ void Cell::addPieceToDeaths(chessman * p)
 {
     if(p->getColor() == "White") {
         whiteDeaths.append(p);
-        for(size_t i = 0 , j = 0 , k = 0 ; i<whiteDeaths.size(); i++) {
-                if(j == 16){
+        int j = 0;
+        int k = 0;
+        for(size_t i = 0; i<whiteDeaths.size(); i++) {
+                if(j == 2){
                     k++;
                     j = 0;
                 }
-                whiteDeaths[i]->setPos(30 + 50*j++,720 + 100*k);
+                whiteDeaths[i]->setPos(1165 + 90*j++, 0 + 120*k);
         }
     }
     else{
         blackDeaths.append(p);
-        for(size_t i = 0 , j = 0 , k = 0; i<blackDeaths.size(); i++) {
-            if(j == 4){
+        int j = 0;
+        int k = 0;
+        for(size_t i = 0 ; i<blackDeaths.size(); i++) {
+            if(j == 2){
                 k++;
                 j = 0;
             }
-            blackDeaths[i]->setPos(600 + 50*j++,720 + 100*k);
+            blackDeaths[i]->setPos(0 + 90*j++,0 + 120*k);
         }
     }
-    alives.removeOne(p);
+    alives.removeAll(p);
 
 }
 
@@ -101,7 +105,7 @@ void Cell::setAddress(QString a)
 
 void Cell::setPiece(chessman * p)
 {
-    p->setPos(x()+40- p->pixmap().width()/2  ,y()+40-p->pixmap().width()/2);
+    p->setPos(x()+60- p->pixmap().width()/2  ,y()+60-p->pixmap().width()/2);
     p->setCell(this);
     piece = p;
     setOccupied(true);

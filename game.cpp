@@ -6,13 +6,18 @@ Game::Game(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Game)
 {
+
     ui->setupUi(this);
     ui->title->setText(title);
     ui->player_2->setText(black);
     ui->player_1->setText(white);
     ui->turn->setText(turn);
     chessScene = new QGraphicsScene;
+    chessScene->setSceneRect(0 , 0 , 1371 , 960);
     ui->chessboardscene->setScene(chessScene);
+    ui->chessboardscene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->chessboardscene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     setBoard();
 }
 
@@ -152,7 +157,7 @@ void Game::setBoard()
     cb = new ChessBoard();
     QVector<QVector<Cell *>> board;
     board.resize(64);
-    cb->drawBoard(board,270,0);
+    cb->drawBoard(board,205,0);
     for (size_t i = 0 ; i < 8 ; i++ )
     {
         for (size_t j = 0; j< 8 ; j++)
