@@ -220,7 +220,7 @@ void Game::on_replacePawnPushButton_clicked()
 {
         if(turn == "White")
         {
-            if(movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 0)
+            if(movingPiece && movingPiece->getSymbol() == "P" /*&& movingPiece->getCell()->row == 0*/)
             {
                 openReplacePawn();
             }
