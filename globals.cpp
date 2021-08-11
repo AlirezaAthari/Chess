@@ -1,5 +1,8 @@
 #include "globals.h"
-int replacePawnChoose = 0;
+
+
+
+QGraphicsScene *chessScene = nullptr;
 QVector <QString> movesSeries = {};
 bool startGame = false;
 bool resetGame = false;

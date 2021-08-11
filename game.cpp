@@ -35,9 +35,9 @@ void Game::setWhiteMans()
     whites.append(piece);
     piece = new Bishop("White");
     whites.append(piece);
-    piece = new King("White");
-    whites.append(piece);
     piece = new Queen("White");
+    whites.append(piece);
+    piece = new King("White");
     whites.append(piece);
     piece = new Bishop("White");
     whites.append(piece);
@@ -56,9 +56,9 @@ void Game::setBlackMans()
     blacks.append(piece);
     piece = new Bishop("Black");
     blacks.append(piece);
-    piece = new King("Black");
-    blacks.append(piece);
     piece = new Queen("Black");
+    blacks.append(piece);
+    piece = new King("Black");
     blacks.append(piece);
     piece = new Bishop("Black");
     blacks.append(piece);
@@ -104,39 +104,18 @@ void Game::addPiece()
 
 }
 
-void Game::reset()
-{
-    int m = 0; int n = 0;
-    for(int i = 0; i < 8; i++) {
-        for(int j = 0; j < 8; j++)
-        {
-
-            Cell *c = chessBoard[i][j];
-            c->setOccupied(false);
-            c->setPieceColor("NONE");
-            c->piece = NULL;
-            if(i < 2) {
-
-                c->setPiece(blacks[m]);
-                blacks[m]->setPiecePlaced(true);
-                alives.append(blacks[m++]);
-
-            }
-            if(i > 5) {
-
-                c->setPiece(whites[n]);
-                whites[n]->setPiecePlaced(true);
-                alives.append(whites[n++]);
-
-            }
-
-        }
-    }
-}
-
 void Game::endGame() //exit
 {
 
+}
+
+void Game::openReplacePawn()
+{
+
+    ReplacePawn * rp;
+    rp = new ReplacePawn(this);
+    rp->setModal(true);
+    rp->show();
 }
 
 Game::~Game()
@@ -164,9 +143,12 @@ void Game::setBoard()
 
 void Game::on_undoPushButton_clicked() //undo
 {
-    QString lastMove = movesSeries.last();
-    if(lastMove == NULL)
+    if(movesSeries.size() == 0)
+    {
         return;
+    }
+    QString lastMove = movesSeries.last();
+    movesSeries.pop_back();
     QString piece;
     QString destination;
     QString origin;
@@ -233,3 +215,24 @@ void Game::on_resetPushButton_clicked()
         addPiece();
     }
 }
+
+void Game::on_replacePawnPushButton_clicked()
+{
+        if(turn == "White")
+        {
+            if(movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 0)
+            {
+                openReplacePawn();
+            }
+            else return;
+        }
+        else
+        {
+            if(movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 7)
+            {
+                openReplacePawn();
+            }
+            else return;
+        }
+}
+

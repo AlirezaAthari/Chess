@@ -154,7 +154,7 @@ qproperty-alignment: AlignCenter;
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>500</y>
+       <y>460</y>
        <width>131</width>
        <height>41</height>
       </rect>
@@ -443,6 +443,19 @@ qproperty-alignment: AlignRight;
        <string>Black :</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="replacePawnPushButton">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>510</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Replace Pawn</string>
+     </property>
     </widget>
    </widget>
    <widget class="QGraphicsView" name="chessboardscene">

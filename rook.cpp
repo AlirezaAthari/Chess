@@ -19,7 +19,7 @@ void Rook::moves(Cell * cb[][8])
     cells.clear();
     int row = getCell()->row;
     int column = getCell()->column;
-    for(size_t i = row-1,j = column; i >= 0 ; i--)
+    for(int i = row-1,j = column; i >= 0 ; i--)
     {
        if(cb[i][j]->getPieceColor() == getColor() )
        {
@@ -47,7 +47,7 @@ void Rook::moves(Cell * cb[][8])
             }
         }
      }
-       for(size_t i = row,j = column-1; j >= 0 ; j--)
+       for(int i = row,j = column-1; j >= 0 ; j--)
        {
          if(cb[i][j]->getPieceColor() == getColor() )
          {

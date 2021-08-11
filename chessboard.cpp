@@ -25,9 +25,3 @@ void ChessBoard::drawBoard(QVector<QVector<Cell *>> & cells ,int x, int y)
     }
 
 }
-
-
-QString ChessBoard::movePiece()
-{
-
-}

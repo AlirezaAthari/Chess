@@ -30,12 +30,7 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
     if(movingPiece)
     {
-//        if (movingPiece->getSymbol() == "P")
-//        {
-//            ReplacePawn *rp;
-//            rp = new ReplacePawn;
-//            rp->show();
-//        }
+
         QString movingSerial = "";
 
         if(getPieceColor() == movingPiece->getColor())
@@ -43,7 +38,7 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         unsigned int temp = 0;
         QList <Cell * > moves = movingPiece->getCells();
 
-        for(size_t i = 0 ; i < moves.size() ; i++)
+        for(int i = 0 ; i < moves.size() ; i++)
         {
             if(this == moves.at(i))
                 temp++;
@@ -85,7 +80,7 @@ void Cell::addPieceToDeaths(chessman * p)
         whiteDeaths.append(p);
         int j = 0;
         int k = 0;
-        for(size_t i = 0; i<whiteDeaths.size(); i++) {
+        for(int i = 0; i<whiteDeaths.size(); i++) {
                 if(j == 2){
                     k++;
                     j = 0;
@@ -97,7 +92,7 @@ void Cell::addPieceToDeaths(chessman * p)
         blackDeaths.append(p);
         int j = 0;
         int k = 0;
-        for(size_t i = 0 ; i<blackDeaths.size(); i++) {
+        for(int i = 0 ; i<blackDeaths.size(); i++) {
             if(j == 2){
                 k++;
                 j = 0;

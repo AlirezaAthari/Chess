@@ -15,7 +15,6 @@
 #include "rook.h"
 #include <QGraphicsScene>
 #include "qabstractscrollarea.h"
-#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -31,8 +30,8 @@ public:
     void setBlackMans();
     void addPieceToDeaths(chessman *);
     void addPiece();
-    void reset();
     void endGame();
+    void openReplacePawn();
     Game(QString , QString  ,QString , QWidget *parent = nullptr);
     ~Game();
 
@@ -42,11 +41,12 @@ private slots:
     void on_undoPushButton_clicked();
 
     void on_resetPushButton_clicked();
+    void on_replacePawnPushButton_clicked();
+
 private:
     Ui::Game *ui;
     ChessBoard * cb;
     QVector<QVector<Cell *>> board;
-    QGraphicsScene *chessScene;
     QList <chessman *> whites;
     QList <chessman *> blacks;
 };

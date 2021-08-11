@@ -3,7 +3,8 @@
 
 #include "chessman.h"
 #include "cell.h"
-extern int replacePawnChoose;
+
+extern QGraphicsScene *chessScene;
 extern QVector <QString> movesSeries;
 extern QList <chessman *> blackDeaths;
 extern QList <chessman *> whiteDeaths;

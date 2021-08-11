@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+
 namespace Ui {
 class ReplacePawn;
 }
@@ -19,6 +20,8 @@ private slots:
     void on_comboBox_activated(int index);
 
     void on_buttonBox_accepted();
+
+    void on_buttonBox_rejected();
 
 private:
     Ui::ReplacePawn *ui;
