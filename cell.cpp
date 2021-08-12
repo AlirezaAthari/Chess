@@ -3,6 +3,7 @@
 #include "globals.h"
 #include "chessman.h"
 #include "pawn.h"
+#include "QMessageBox"
 
 Cell::Cell(QGraphicsItem *parent) : QGraphicsRectItem(parent)
 {
@@ -55,6 +56,11 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece->firstmove = false;
         if (this->hasPiece())
         {
+            if(this->piece->getSymbol() == "K")
+            {
+                changeTurn();
+                return;
+            }
             this->setOccupied(false);
             this->piece->setCell(nullptr);
             this->piece->isDead = true;
