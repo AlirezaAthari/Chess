@@ -1,155 +1,151 @@
 #include "queen.h"
 
-
-Queen::Queen(QString color , QGraphicsItem *parent):chessman(color , 'Q' , parent)
+Queen::Queen(QString color, QGraphicsItem *parent) : chessman(color, 'Q', parent)
 {
-  setImage() ;
+  setImage();
 }
-
 
 void Queen::setImage()
 {
-  if(getColor() == "White")
+  if (getColor() == "White")
   {
-    setPixmap(QPixmap(":/images/White/queen.png") ) ;
+    setPixmap(QPixmap(":/images/White/queen.png"));
   }
   else
   {
-    setPixmap(QPixmap(":/images/Black/queen.png") ) ;
+    setPixmap(QPixmap(":/images/Black/queen.png"));
   }
 }
 
-
-void Queen::moves(Cell * cb[][8])
+void Queen::moves(Cell *cb[][8])
 {
-  cells.clear() ;
-  int row = getCell()->row ;
-  int column = getCell()->column ;
-  for(int i = row - 1 , j = column ; i >= 0 ; i--)
+  cells.clear();
+  int row = getCell()->row;
+  int column = getCell()->column;
+  for (int i = row - 1, j = column; i >= 0; i--)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
-  for(int i = row + 1 , j = column ; i <  8; i++)
+  for (int i = row + 1, j = column; i < 8; i++)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
-  for(int i = row , j = column - 1 ; j >= 0 ; j--)
+  for (int i = row, j = column - 1; j >= 0; j--)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
 
   //For Right
-  for(int i = row , j = column + 1 ; j < 8 ; j++)
+  for (int i = row, j = column + 1; j < 8; j++)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
 
   //For upper Left
-  for(int i = row - 1 , j = column - 1 ; i >= 0 && j >=0 ; i-- , j--)
+  for (int i = row - 1, j = column - 1; i >= 0 && j >= 0; i--, j--)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
 
   //For upper right
-  for(int i = row - 1 , j = column + 1 ; i >= 0 && j < 8 ; i-- , j++)
+  for (int i = row - 1, j = column + 1; i >= 0 && j < 8; i--, j++)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
-  for(int i = row + 1 , j = column + 1 ; i < 8 && j < 8 ; i++ , j++)
+  for (int i = row + 1, j = column + 1; i < 8 && j < 8; i++, j++)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
-  for(int i = row + 1 , j = column - 1 ; i < 8 && j >= 0 ; i++ , j--)
+  for (int i = row + 1, j = column - 1; i < 8 && j >= 0; i++, j--)
   {
-    if(cb[i][j]->getPieceColor() == getColor() )
+    if (cb[i][j]->getPieceColor() == getColor())
     {
-      break ;
+      break;
     }
     else
     {
-      cells.append(cb[i][j]) ;
-      if(cellColorise(cells.last() ) )
+      cells.append(cb[i][j]);
+      if (cellColorise(cells.last()))
       {
-        break ;
+        break;
       }
     }
   }
-
 }

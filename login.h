@@ -4,8 +4,9 @@
 #include <QDialog>
 #include "game.h"
 #include "ui_login.h"
-namespace Ui {
-class Login;
+namespace Ui
+{
+    class Login;
 }
 
 class Login : public QDialog

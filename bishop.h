@@ -7,10 +7,9 @@
 class Bishop : public chessman
 {
 public:
-    Bishop(QString, QGraphicsItem * = nullptr) ;
-    virtual void setImage() ;
-    virtual void moves( Cell * cb[][8]) ;
-
+    Bishop(QString, QGraphicsItem * = nullptr);
+    virtual void setImage();
+    virtual void moves(Cell *cb[][8]);
 };
 
 #endif

@@ -3,9 +3,9 @@
 
 #include <QDialog>
 
-
-namespace Ui {
-class ReplacePawn;
+namespace Ui
+{
+    class ReplacePawn;
 }
 
 class ReplacePawn : public QDialog

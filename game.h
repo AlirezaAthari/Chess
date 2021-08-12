@@ -17,7 +17,10 @@
 #include "qabstractscrollarea.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Game; }
+namespace Ui
+{
+    class Game;
+}
 QT_END_NAMESPACE
 
 class Game : public QMainWindow
@@ -32,7 +35,7 @@ public:
     void addPiece();
     void endGame();
     void openReplacePawn();
-    Game(QString , QString  ,QString , QWidget *parent = nullptr);
+    Game(QString, QString, QString, QWidget *parent = nullptr);
     ~Game();
 
 private slots:
@@ -45,9 +48,9 @@ private slots:
 
 private:
     Ui::Game *ui;
-    ChessBoard * cb;
+    ChessBoard *cb;
     QVector<QVector<Cell *>> board;
-    QList <chessman *> whites;
-    QList <chessman *> blacks;
+    QList<chessman *> whites;
+    QList<chessman *> blacks;
 };
 #endif // GAME_H

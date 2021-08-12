@@ -1,7 +1,7 @@
 #include "chessman.h"
 #include "globals.h"
 #include "QDebug"
-chessman::chessman(QString color  , QChar symbol ,QGraphicsItem *parent) :QGraphicsPixmapItem(parent)
+chessman::chessman(QString color, QChar symbol, QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
 {
     this->color = color;
     piecePlaced = true;
@@ -11,7 +11,7 @@ chessman::chessman(QString color  , QChar symbol ,QGraphicsItem *parent) :QGraph
 
 void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(movingPiece == this)
+    if (movingPiece == this)
     {
         movingPiece->cellDecolor();
         movingPiece->getCell()->resetCellColor();
@@ -31,13 +31,13 @@ void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece->moves(chessBoard);
     }
 
-    else if(this->getColor() != movingPiece->getColor())
+    else if (this->getColor() != movingPiece->getColor())
     {
         this->getCell()->mousePressEvent(event);
     }
 }
 
-void chessman::setCell(Cell * c)
+void chessman::setCell(Cell *c)
 {
     currentCell = c;
 }
@@ -77,7 +77,7 @@ bool chessman::getPiecePlaced()
     return piecePlaced;
 }
 
-bool chessman::cellColorise(Cell * c)
+bool chessman::cellColorise(Cell *c)
 {
     if (c->hasPiece())
     {
@@ -93,12 +93,11 @@ bool chessman::cellColorise(Cell * c)
 
 void chessman::cellDecolor()
 {
-    for(int i = 0 ;i < cells.size() ; i++)
+    for (int i = 0; i < cells.size(); i++)
     {
         cells.at(i)->resetCellColor();
     }
 }
-
 
 void chessman::setSymbol(QChar s)
 {

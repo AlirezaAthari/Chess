@@ -2,7 +2,6 @@
 #define QUEEN_H
 
 #include "chessman.h"
-
 #include "cell.h"
 #include "chessman.h"
 #include "chessboard.h"
@@ -13,10 +12,9 @@ class Queen : public chessman
 {
 
 public:
-   Queen(QString, QGraphicsItem * = nullptr) ;
-   virtual void setImage() ;
-   virtual void moves(Cell * cb[][8]) ;
-
+   Queen(QString, QGraphicsItem * = nullptr);
+   virtual void setImage();
+   virtual void moves(Cell *cb[][8]);
 };
 
-#endif 
+#endif

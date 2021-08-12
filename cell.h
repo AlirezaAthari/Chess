@@ -4,7 +4,6 @@
 #include "chessman.h"
 #include "QGraphicsRectItem"
 #include "replacepawn.h"
-#include "secdialog.h"
 
 class chessman;
 class Cell : public QGraphicsRectItem
@@ -17,13 +16,13 @@ public:
     void setAddress(QString);
     void setPiece(chessman *);
     void setColor(QColor);
-    void setCellColor (QColor);
+    void setCellColor(QColor);
     void resetCellColor();
     void setPieceColor(QString);
     QString getAddress();
     QString getPieceColor();
     bool hasPiece();
-    chessman * piece;
+    chessman *piece;
     int row;
     int column;
 
@@ -33,7 +32,7 @@ private:
     QBrush brush;
     QColor cellColor;
     QString pieceColor;
-    ReplacePawn * rp;
+    ReplacePawn *rp;
 };
 
 #endif // CELL_H

@@ -1,20 +1,19 @@
 #include "globals.h"
 
-
-
 QGraphicsScene *chessScene = nullptr;
-QVector <QString> movesSeries = {};
+QVector<QString> movesSeries = {};
 bool startGame = false;
 bool resetGame = false;
-QList <chessman *> blackDeaths = {};
-QList <chessman *> whiteDeaths = {};
-QList <chessman *> alives = {};
-Cell * chessBoard[8][8] = {};
-chessman * movingPiece = nullptr;
+QList<chessman *> blackDeaths = {};
+QList<chessman *> whiteDeaths = {};
+QList<chessman *> alives = {};
+Cell *chessBoard[8][8] = {};
+chessman *movingPiece = nullptr;
 QString turn = "White";
-void changeTurn ()
+void changeTurn()
 {
-    if(turn == "Black")
+    if (turn == "Black")
         turn = "White";
-    else turn = "Black";
+    else
+        turn = "Black";
 }

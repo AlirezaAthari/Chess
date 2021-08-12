@@ -11,12 +11,11 @@
 class King : public chessman
 {
 public:
-    King(QString, QGraphicsItem * = nullptr) ;
-    virtual void setImage() ;
-    virtual void moves(Cell * cb[][8]) ;
+    King(QString, QGraphicsItem * = nullptr);
+    virtual void setImage();
+    virtual void moves(Cell *cb[][8]);
 
 signals:
-
 };
 
 #endif

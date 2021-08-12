@@ -10,12 +10,9 @@
 class Knight : public chessman
 {
 public:
-   Knight(QString, QGraphicsItem * = nullptr) ;
-   virtual void setImage() ;
-   virtual void moves(Cell * cb[][8]) ;
-
-signals:
-
+   Knight(QString, QGraphicsItem * = nullptr);
+   virtual void setImage();
+   virtual void moves(Cell *cb[][8]);
 };
 
 #endif

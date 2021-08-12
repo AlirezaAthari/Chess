@@ -7,7 +7,8 @@ class ChessBoard
 {
 public:
     ChessBoard();
-    void drawBoard(QVector<QVector<Cell *>> &  ,int , int );
+    void drawBoard(QVector<QVector<Cell *>> &, int, int);
+
 private:
 };
 

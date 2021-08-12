@@ -7,9 +7,8 @@
 #include "pawn.h"
 #include "knight.h"
 #include "bishop.h"
-ReplacePawn::ReplacePawn(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ReplacePawn)
+ReplacePawn::ReplacePawn(QWidget *parent) : QDialog(parent),
+                                            ui(new Ui::ReplacePawn)
 {
     ui->setupUi(this);
 }
@@ -24,7 +23,6 @@ void ReplacePawn::on_comboBox_activated(int index)
     choosen = index;
 }
 
-
 void ReplacePawn::on_buttonBox_accepted()
 {
     int i = movingPiece->getCell()->row;
@@ -32,21 +30,25 @@ void ReplacePawn::on_buttonBox_accepted()
     movingPiece->cellDecolor();
     movingPiece->getCell()->setOccupied(false);
     movingPiece->getCell()->resetCellColor();
-    movingPiece->setPos(x() + 10000 , y() + 10000);
+    movingPiece->setPos(x() + 10000, y() + 10000);
     alives.removeAll(movingPiece);
     movingPiece->getCell()->piece = nullptr;
-    chessman * q;
+    chessman *q;
     switch (choosen)
     {
-    case 0 :
+    case 0:
         break;
-    case 1 : q = new Queen(movingPiece->getColor());
+    case 1:
+        q = new Queen(movingPiece->getColor());
         break;
-    case 2 : q = new Rook(movingPiece->getColor());
+    case 2:
+        q = new Rook(movingPiece->getColor());
         break;
-    case 3 : q = new Bishop(movingPiece->getColor());
+    case 3:
+        q = new Bishop(movingPiece->getColor());
         break;
-    case 4 : q = new Knight(movingPiece->getColor());
+    case 4:
+        q = new Knight(movingPiece->getColor());
         break;
     }
     alives.append(q);
@@ -56,9 +58,7 @@ void ReplacePawn::on_buttonBox_accepted()
     this->close();
 }
 
-
 void ReplacePawn::on_buttonBox_rejected()
 {
     this->close();
 }
-

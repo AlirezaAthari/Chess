@@ -2,9 +2,8 @@
 #include "qdebug.h"
 #include "globals.h"
 
-Game::Game(QString t , QString w ,QString b , QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Game)
+Game::Game(QString t, QString w, QString b, QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::Game)
 {
     ui->setupUi(this);
     ui->title->setText(t);
@@ -12,20 +11,19 @@ Game::Game(QString t , QString w ,QString b , QWidget *parent)
     ui->player_2->setText(b);
     ui->turn->setText(turn);
     chessScene = new QGraphicsScene;
-    chessScene->setSceneRect(0 , 0 , 1371 , 960);
+    chessScene->setSceneRect(0, 0, 1371, 960);
     ui->chessboardscene->setScene(chessScene);
     ui->chessboardscene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->chessboardscene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setBoard();
 }
 
-
-
 void Game::setWhiteMans()
 {
 
     chessman *piece;
-    for(int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++)
+    {
         piece = new Pawn("White");
         whites.append(piece);
     }
@@ -66,53 +64,55 @@ void Game::setBlackMans()
     blacks.append(piece);
     piece = new Rook("Black");
     blacks.append(piece);
-    for(int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++)
+    {
         piece = new Pawn("Black");
         blacks.append(piece);
-        }
+    }
 }
 
 void Game::addPiece()
 {
-    for(int i = 0; i < 8; i++) {
-        for(int j = 0; j < 8; j++)
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
         {
 
-            Cell *c =chessBoard[i][j];
-            if(i < 2) {
+            Cell *c = chessBoard[i][j];
+            if (i < 2)
+            {
                 static int m;
                 if (m == 16)
                     m = 0;
                 c->setPiece(blacks[m]);
                 alives.append(blacks[m]);
-                QGraphicsItem * p = blacks[m];
+                QGraphicsItem *p = blacks[m];
                 m++;
                 chessScene->addItem(p);
             }
-            if(i > 5) {
+            if (i > 5)
+            {
                 static int n;
                 if (n == 16)
                     n = 0;
                 c->setPiece(whites[n]);
                 alives.append(whites[n]);
-                QGraphicsItem * p = whites[n];
+                QGraphicsItem *p = whites[n];
                 n++;
                 chessScene->addItem(p);
             }
         }
     }
-
 }
 
 void Game::endGame() //exit
 {
-
 }
 
 void Game::openReplacePawn()
 {
 
-    ReplacePawn * rp;
+    ReplacePawn *rp;
     rp = new ReplacePawn(this);
     rp->setModal(true);
     rp->show();
@@ -127,12 +127,12 @@ void Game::setBoard()
 {
     cb = new ChessBoard();
     board.resize(64);
-    cb->drawBoard(board,205,0);
-    for (size_t i = 0 ; i < 8 ; i++ )
+    cb->drawBoard(board, 205, 0);
+    for (size_t i = 0; i < 8; i++)
     {
-        for (size_t j = 0; j< 8 ; j++)
+        for (size_t j = 0; j < 8; j++)
         {
-            QGraphicsItem * c = board[i][j];
+            QGraphicsItem *c = board[i][j];
             chessScene->addItem(c);
             chessBoard[i][j] = board[i][j];
         }
@@ -143,7 +143,7 @@ void Game::setBoard()
 
 void Game::on_undoPushButton_clicked() //undo
 {
-    if(movesSeries.size() == 0)
+    if (movesSeries.size() == 0)
     {
         return;
     }
@@ -153,15 +153,16 @@ void Game::on_undoPushButton_clicked() //undo
     QString destination;
     QString origin;
     QString deathPiece;
-    for (int i = 0; i < lastMove.size() ; i++ )
+    for (int i = 0; i < lastMove.size(); i++)
     {
-        if(i<2)
+        if (i < 2)
             piece.append(lastMove.at(i));
-        else if (i>1 && i<6)
+        else if (i > 1 && i < 6)
             destination.append(lastMove.at(i));
         else if (i == 6)
             deathPiece.append(lastMove.at(i));
-        else origin.append(lastMove.at(i));
+        else
+            origin.append(lastMove.at(i));
     }
     int i = static_cast<QString>(origin[1]).toInt();
     int j = static_cast<QString>(origin[3]).toInt();
@@ -171,11 +172,11 @@ void Game::on_undoPushButton_clicked() //undo
     chessBoard[m][n]->setPiece(chessBoard[i][j]->piece);
     chessBoard[i][j]->piece = nullptr;
     changeTurn();
-    if(deathPiece == "N")
+    if (deathPiece == "N")
         return;
     else
     {
-        if(piece[0] == "W")
+        if (piece[0] == "W")
         {
             chessBoard[i][j]->setPiece(blackDeaths.last());
             blackDeaths.pop_back();
@@ -187,13 +188,11 @@ void Game::on_undoPushButton_clicked() //undo
         }
         chessBoard[i][j]->setOccupied(true);
     }
-
 }
-
 
 void Game::on_startPushButton_clicked() //start
 {
-    if(!startGame)
+    if (!startGame)
     {
         startGame = true;
         addPiece();
@@ -202,11 +201,11 @@ void Game::on_startPushButton_clicked() //start
 
 void Game::on_resetPushButton_clicked()
 {
-    if(startGame)
+    if (startGame)
     {
         resetGame = true;
         alives.clear();
-        turn="White";
+        turn = "White";
         whites.clear();
         blacks.clear();
         board.clear();
@@ -218,21 +217,22 @@ void Game::on_resetPushButton_clicked()
 
 void Game::on_replacePawnPushButton_clicked()
 {
-        if(turn == "White")
+    if (turn == "White")
+    {
+        if (movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 0)
         {
-            if(movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 0)
-            {
-                openReplacePawn();
-            }
-            else return;
+            openReplacePawn();
         }
         else
+            return;
+    }
+    else
+    {
+        if (movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 7)
         {
-            if(movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 7)
-            {
-                openReplacePawn();
-            }
-            else return;
+            openReplacePawn();
         }
+        else
+            return;
+    }
 }
-
