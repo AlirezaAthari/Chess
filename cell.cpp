@@ -56,10 +56,47 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece->firstmove = false;
         if (this->hasPiece())
         {
-          if(this->piece->getSymbol() == 'P' && this->piece->getColor() == "white")
+          if(this->piece->getSymbol() == 'P' && this->piece->getColor() == "Black")
           {
-            positiveSuser1 += 1 ;
+            positiveplayer1 += 3 ;
           }
+          else if(this->piece->getSymbol() == 'P' && this->piece->getColor() == " White")
+          {
+            positiveplayer2 += 3 ;
+          }
+          else if(this->piece->getSymbol() == 'B' && this->piece->getColor() == "Black")
+          {
+            positiveplayer1 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'B' && this->piece->getColor() == "White")
+          {
+            positiveplayer2 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'H' && this->piece->getColor() == "Black")
+          {
+            positiveplayer1 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'H' && this->piece->getColor() == "White")
+          {
+            positiveplayer2 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'R' && this->piece->getColor() == "Black")
+          {
+            positiveplayer1 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'R' && this->piece->getColor() == "White")
+          {
+            positiveplayer2 += 8 ;
+          }
+          else if(this->piece->getSymbol() == 'Q' && this->piece->getColor() == "Black")
+          {
+            positiveplayer1 += 15 ;
+          }
+          else if(this->piece->getSymbol() == 'Q' && this->piece->getColor() == "White")
+          {
+            positiveplayer2 += 15 ;
+          }
+
             if(this->piece->getSymbol() == 'K')
             {
                 changeTurn();

@@ -226,7 +226,7 @@ void Game::on_resetPushButton_clicked()
     }
 }
 
-void Game::on_replacePawnPushButton_clicked()
+void Game::on_replacePawnPushButton_clicked()//replacePawn
 {
     if (turn == "White")
     {

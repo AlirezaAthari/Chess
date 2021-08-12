@@ -6,17 +6,17 @@
 
 extern QGraphicsScene *chessScene;
 extern QVector<QString> movesSeries;
-extern QList<chessman *> blackDeaths;
-extern QList<chessman *> whiteDeaths;
+extern QList<chessman *> blackDeaths;//A qlist for pointers of the chessman
+extern QList<chessman *> whiteDeaths;//A qlist for pointers of the chessman
 extern bool startGame;
 extern bool resetGame;
-extern Cell *chessBoard[8][8];
+extern Cell *chessBoard[8][8];//Two-dimensional array for pointers of the global class
 extern chessman *movingPiece;
 extern QString turn;
 extern void changeTurn();
-extern QList<chessman *> alives;
-extern int positiveSuser1 ;
-extern int negativeSuser1 ;
-extern int positiveSuser2 ;
-extern int negativeSuser2 ; 
+extern QList<chessman *> alives;//A qlist for pointers of the chessman
+extern int positiveplayer1 ;//positive points fot user1 ;
+extern int negativeplayer1 ;//negative points fot user1 ;
+extern int positiveplayer2 ;//positive points fot user2 ;
+extern int negativeplayer2 ;//negative points fot user2 ;
 #endif // GLOBALS_H
