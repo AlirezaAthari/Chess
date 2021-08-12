@@ -169,6 +169,16 @@ void Game::on_undoPushButton_clicked() //undo
     int m = static_cast<QString>(destination[1]).toInt();
     int n = static_cast<QString>(destination[3]).toInt();
     chessBoard[i][j]->setOccupied(false);
+    if(chessBoard[i][j]->piece->getSymbol() == "P")
+    {
+        if(chessBoard[i][j]->piece->getColor() == "White" && (i == 4 || i == 5))
+        {
+            chessBoard[i][j]->piece->firstmove = true;
+        }
+        else if (chessBoard[i][j]->piece->getColor() == "Black" && (i == 2 || i == 3))
+            chessBoard[i][j]->piece->firstmove = true;
+
+    }
     chessBoard[m][n]->setPiece(chessBoard[i][j]->piece);
     chessBoard[i][j]->piece = nullptr;
     changeTurn();
@@ -204,6 +214,7 @@ void Game::on_resetPushButton_clicked()
     if (startGame)
     {
         resetGame = true;
+        movesSeries.clear();
         alives.clear();
         turn = "White";
         whites.clear();
