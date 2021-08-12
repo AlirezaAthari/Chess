@@ -25,6 +25,7 @@ public:
     bool getPiecePlaced();
     bool cellColorise(Cell *);
     void cellDecolor();
+    bool isDead = false;
     bool firstmove;
 
 protected:

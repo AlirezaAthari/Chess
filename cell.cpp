@@ -13,7 +13,6 @@ Cell::Cell(QGraphicsItem *parent) : QGraphicsRectItem(parent)
         resetGame = false;
     }
     setRect(0, 0, 120, 120);
-    setAddress("NONE");
     setOccupied(false);
     setPieceColor("NONE");
     piece = NULL;
@@ -58,6 +57,7 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             this->setOccupied(false);
             this->piece->setCell(nullptr);
+            this->piece->isDead = true;
             addPieceToDeaths(this->piece);
             movingSerial.append(this->piece->getSymbol());
         }
@@ -116,12 +116,6 @@ void Cell::setOccupied(bool o)
     else
         setPieceColor("NONE");
 }
-
-void Cell::setAddress(QString a)
-{
-    address = a;
-}
-
 void Cell::setPiece(chessman *p)
 {
     p->setPos(x() + 60 - p->pixmap().width() / 2, y() + 60 - p->pixmap().width() / 2);
@@ -150,11 +144,6 @@ void Cell::resetCellColor()
 void Cell::setPieceColor(QString c)
 {
     pieceColor = c;
-}
-
-QString Cell::getAddress()
-{
-    return address;
 }
 
 QString Cell::getPieceColor()

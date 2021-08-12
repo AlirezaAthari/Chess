@@ -11,6 +11,8 @@ chessman::chessman(QString color, QChar symbol, QGraphicsItem *parent) : QGraphi
 
 void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    if(this->isDead)
+        return;
     if (movingPiece == this)
     {
         movingPiece->cellDecolor();
