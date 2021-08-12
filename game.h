@@ -6,7 +6,6 @@
 #include "cell.h"
 #include <QAbstractScrollArea>
 #include "ui_game.h"
-#include "chessboard.h"
 #include "pawn.h"
 #include "bishop.h"
 #include "king.h"
@@ -32,7 +31,7 @@ public:
     void setWhiteMans();
     void setBlackMans();
     void addPieceToDeaths(chessman *);
-    void addPiece();
+    void addPiece(); //This function adds the pieces to each chess house after hitting the start button .
     void endGame();
     void openReplacePawn();
     Game(QString, QString, QString, QWidget *parent = nullptr);

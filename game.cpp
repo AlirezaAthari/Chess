@@ -169,7 +169,7 @@ void Game::on_undoPushButton_clicked() //undo
     int m = static_cast<QString>(destination[1]).toInt();
     int n = static_cast<QString>(destination[3]).toInt();
     chessBoard[i][j]->setOccupied(false);
-    if(chessBoard[i][j]->piece->getSymbol() == "P")
+    if(chessBoard[i][j]->piece->getSymbol() == 'P')
     {
         if(chessBoard[i][j]->piece->getColor() == "White" && (i == 4 || i == 5))
         {
@@ -186,7 +186,7 @@ void Game::on_undoPushButton_clicked() //undo
         return;
     else
     {
-        if (piece[0] == "W")
+        if (piece[0] == 'W')
         {
             chessBoard[i][j]->setPiece(blackDeaths.last());
             blackDeaths.pop_back();
@@ -230,7 +230,7 @@ void Game::on_replacePawnPushButton_clicked()
 {
     if (turn == "White")
     {
-        if (movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 0)
+        if (movingPiece && movingPiece->getSymbol() == 'P' && movingPiece->getCell()->row == 0)
         {
             openReplacePawn();
         }
@@ -239,7 +239,7 @@ void Game::on_replacePawnPushButton_clicked()
     }
     else
     {
-        if (movingPiece && movingPiece->getSymbol() == "P" && movingPiece->getCell()->row == 7)
+        if (movingPiece && movingPiece->getSymbol() == 'P' && movingPiece->getCell()->row == 7)
         {
             openReplacePawn();
         }

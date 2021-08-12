@@ -10,6 +10,11 @@ QList<chessman *> alives = {};
 Cell *chessBoard[8][8] = {};
 chessman *movingPiece = nullptr;
 QString turn = "White";
+int positiveSuser1 = 0 ;
+int negativeSuser1 = 0 ;
+int positiveSuser2 = 0 ;
+int negativeSuser2 = 0 ;
+
 void changeTurn()
 {
     if (turn == "Black")

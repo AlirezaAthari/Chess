@@ -15,4 +15,8 @@ extern chessman *movingPiece;
 extern QString turn;
 extern void changeTurn();
 extern QList<chessman *> alives;
+extern int positiveSuser1 ;
+extern int negativeSuser1 ;
+extern int positiveSuser2 ;
+extern int negativeSuser2 ; 
 #endif // GLOBALS_H

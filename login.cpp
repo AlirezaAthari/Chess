@@ -21,10 +21,10 @@ void Login::on_pushButton_clicked()
      if (b != "" && w != "" && t != "")
      {
          g = new Game(t, w, b, this);
-         g->show();
-         hide();
+         g->show(); // to show a game window
+         hide(); // exit the login window
      }
-     else
+     else // If the users name and title box is empty, this message will be printed
      {
          QMessageBox error;
          error.setText("Please fill all of the blanks!");

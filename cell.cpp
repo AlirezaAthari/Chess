@@ -56,7 +56,11 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece->firstmove = false;
         if (this->hasPiece())
         {
-            if(this->piece->getSymbol() == "K")
+          if(this->piece->getSymbol() == 'P' && this->piece->getColor() == "white")
+          {
+            positiveSuser1 += 1 ;
+          }
+            if(this->piece->getSymbol() == 'K')
             {
                 changeTurn();
                 return;
