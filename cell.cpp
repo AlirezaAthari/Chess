@@ -93,7 +93,7 @@ void Cell::addPieceToDeaths(chessman *p)
                 k++;
                 j = 0;
             }
-            whiteDeaths[i]->setPos(1165 + 90 * j++, 0 + 120 * k);
+            whiteDeaths[i]->setPos(1525 + 90 * j++, 0 + 120 * k);
         }
     }
     else
@@ -108,7 +108,7 @@ void Cell::addPieceToDeaths(chessman *p)
                 k++;
                 j = 0;
             }
-            blackDeaths[i]->setPos(0 + 90 * j++, 0 + 120 * k);
+            blackDeaths[i]->setPos(231 + 90 * j++, 0 + 120 * k);
         }
     }
     alives.removeAll(p);

@@ -4,6 +4,10 @@
 #include "chessman.h"
 #include "cell.h"
 
+extern QGraphicsTextItem *player1Point;
+extern QGraphicsTextItem *player2Point;
+extern QGraphicsTextItem *checkDisplay;
+extern QGraphicsTextItem *turnDisplay;
 extern QGraphicsScene *chessScene;
 extern QVector<QString> movesSeries;
 extern QList<chessman *> blackDeaths;

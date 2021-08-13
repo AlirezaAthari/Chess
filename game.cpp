@@ -9,12 +9,29 @@ Game::Game(QString t, QString w, QString b, QWidget *parent)
     ui->title->setText(t);
     ui->player_1->setText(w);
     ui->player_2->setText(b);
-    ui->turn->setText(turn);
     chessScene = new QGraphicsScene;
-    chessScene->setSceneRect(0, 0, 1371, 960);
+    turnDisplay = new QGraphicsTextItem;
+    player1Point = new QGraphicsTextItem;
+    player2Point = new QGraphicsTextItem;
+    checkDisplay = new QGraphicsTextItem;
+    QFont font1;
+    font1.setBold(true);
+    font1.setPixelSize(16);
+    turnDisplay = chessScene->addText("White" , font1);
+    checkDisplay = chessScene->addText("Check!" , font1);
+    player1Point = chessScene->addText("0");
+    player2Point = chessScene->addText("0");
+    checkDisplay->setDefaultTextColor(Qt::red);
+    checkDisplay->setPos(75, 900);
+    player1Point->setPos(143 , 732);
+    player2Point->setPos(143 , 790);
+    checkDisplay->setVisible(false);
+    turnDisplay->setPos(143 , 842);
+    chessScene->setSceneRect(0, 0, 1861, 960);
     ui->chessboardscene->setScene(chessScene);
     ui->chessboardscene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->chessboardscene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //chessScene->addItem(turnDisplay);
     setBoard();
 }
 
@@ -127,7 +144,7 @@ void Game::setBoard()
 {
     cb = new ChessBoard();
     board.resize(64);
-    cb->drawBoard(board, 205, 0);
+    cb->drawBoard(board, 565, 0);
     for (size_t i = 0; i < 8; i++)
     {
         for (size_t j = 0; j < 8; j++)

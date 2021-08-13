@@ -1,5 +1,10 @@
 #include "globals.h"
 
+
+QGraphicsTextItem *player1Point = nullptr;
+QGraphicsTextItem *player2Point = nullptr;
+QGraphicsTextItem *checkDisplay = nullptr;
+QGraphicsTextItem *turnDisplay = nullptr;
 QGraphicsScene *chessScene = nullptr;
 QVector<QString> movesSeries = {};
 bool startGame = false;
@@ -16,4 +21,5 @@ void changeTurn()
         turn = "White";
     else
         turn = "Black";
+    turnDisplay->setPlainText(turn);
 }
