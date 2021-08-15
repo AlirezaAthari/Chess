@@ -10,6 +10,7 @@ class Cell : public QGraphicsRectItem
 {
 public:
     Cell(QGraphicsItem *parent = nullptr);
+    ~Cell();
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void addPieceToDeaths(chessman *);
     void setOccupied(bool);
@@ -18,8 +19,12 @@ public:
     void setCellColor(QColor);
     void resetCellColor();
     void setPieceColor(QString);
+    QColor getCellCurrentColor();
+    void setCellCurrentColor(QColor);
     QString getPieceColor();
     bool hasPiece();
+    void checkThreads();
+    bool willCheck();
     chessman *piece;
     int row;
     int column;
@@ -27,9 +32,9 @@ public:
 private:
     bool occupied;
     QBrush brush;
-    QColor cellColor;
+    QColor cellPrimaryColor;
+    QColor cellCurrentColor;
     QString pieceColor;
-    ReplacePawn *rp;
 };
 
 #endif // CELL_H

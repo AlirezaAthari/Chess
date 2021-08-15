@@ -148,7 +148,7 @@ text-align: Center;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>440</y>
+       <y>420</y>
        <width>191</width>
        <height>20</height>
       </rect>
@@ -246,6 +246,19 @@ qproperty-alignment: AlignCenter;
      </property>
      <property name="text">
       <string>x</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="secondMovePushButton">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>230</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Second Move</string>
      </property>
     </widget>
    </widget>

@@ -85,7 +85,6 @@ void Queen::moves(Cell *cb[][8])
     }
   }
 
-  //For upper Left
   for (int i = row - 1, j = column - 1; i >= 0 && j >= 0; i--, j--)
   {
     if (cb[i][j]->getPieceColor() == getColor())

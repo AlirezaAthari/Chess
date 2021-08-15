@@ -11,6 +11,7 @@ class chessman : public QGraphicsPixmapItem
 {
 public:
     chessman(QString, QChar, QGraphicsItem * = nullptr);
+    ~chessman();
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void setCell(Cell *);
     void setColor(QString);

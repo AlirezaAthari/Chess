@@ -10,28 +10,10 @@ Game::Game(QString t, QString w, QString b, QWidget *parent)
     ui->player_1->setText(w);
     ui->player_2->setText(b);
     chessScene = new QGraphicsScene;
-    turnDisplay = new QGraphicsTextItem;
-    player1Point = new QGraphicsTextItem;
-    player2Point = new QGraphicsTextItem;
-    checkDisplay = new QGraphicsTextItem;
-    QFont font1;
-    font1.setBold(true);
-    font1.setPixelSize(16);
-    turnDisplay = chessScene->addText("White" , font1);
-    checkDisplay = chessScene->addText("Check!" , font1);
-    player1Point = chessScene->addText("0");
-    player2Point = chessScene->addText("0");
-    checkDisplay->setDefaultTextColor(Qt::red);
-    checkDisplay->setPos(75, 900);
-    player1Point->setPos(143 , 732);
-    player2Point->setPos(143 , 790);
-    checkDisplay->setVisible(false);
-    turnDisplay->setPos(143 , 842);
     chessScene->setSceneRect(0, 0, 1861, 960);
     ui->chessboardscene->setScene(chessScene);
     ui->chessboardscene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->chessboardscene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //chessScene->addItem(turnDisplay);
     setBoard();
 }
 
@@ -124,20 +106,71 @@ void Game::addPiece()
 
 void Game::endGame() //exit
 {
+        mated = true;
+        if (positiveplayer1 > positiveplayer2)
+            checkDisplay->setPlainText("White won!");
+        else checkDisplay->setPlainText("Black won!");
 }
 
 void Game::openReplacePawn()
 {
-
     ReplacePawn *rp;
     rp = new ReplacePawn(this);
     rp->setModal(true);
     rp->show();
 }
 
+void Game::setChessScene()
+{
+    turnDisplay = new QGraphicsTextItem;
+    player1Point = new QGraphicsTextItem;
+    player2Point = new QGraphicsTextItem;
+    checkDisplay = new QGraphicsTextItem;
+    QFont font1;
+    font1.setBold(true);
+    font1.setPixelSize(16);
+    turnDisplay = chessScene->addText("White" , font1);
+    checkDisplay = chessScene->addText("Check!" , font1);
+    player1Point = chessScene->addText(QString::number(positiveplayer1));
+    player2Point= chessScene->addText(QString::number(positiveplayer2));
+    checkDisplay->setDefaultTextColor(Qt::red);
+    checkDisplay->setPos(25, 900);
+    player1Point->setPos(143 , 732);
+    player2Point->setPos(143 , 790);
+    turnDisplay->setPos(143 , 842);
+    checkDisplay->setVisible(false);
+
+}
+
 Game::~Game()
 {
+    delete player1Point;
+    delete player2Point;
+    delete checkDisplay;
+    delete turnDisplay;
+    delete movingPiece;
+    for ( int i ; i < blackDeaths.size() ; i++ )
+    {
+        delete blackDeaths.at(i);
+    }
+    for ( int i ; i < whiteDeaths.size() ; i++ )
+    {
+        delete whiteDeaths.at(i);
+    }
+    for ( int i ; i < alives.size() ; i++ )
+    {
+        delete alives.at(i);
+    }
+    for ( int i ; i < 8 ; i++ )
+    {
+        for (int j = 0; j < 8; j++ )
+        {
+            delete chessBoard[i][j];
+        }
+    }
+    delete chessScene;
     delete ui;
+    delete this;
 }
 
 void Game::setBoard()
@@ -157,70 +190,20 @@ void Game::setBoard()
     setBlackMans();
     setWhiteMans();
 }
-
 void Game::on_undoPushButton_clicked() //undo
 {
     if (movesSeries.size() == 0)
     {
         return;
     }
-    QString lastMove = movesSeries.last();
-    movesSeries.pop_back();
-    QString piece;
-    QString destination;
-    QString origin;
-    QString deathPiece;
-    for (int i = 0; i < lastMove.size(); i++)
-    {
-        if (i < 2)
-            piece.append(lastMove.at(i));
-        else if (i > 1 && i < 6)
-            destination.append(lastMove.at(i));
-        else if (i == 6)
-            deathPiece.append(lastMove.at(i));
-        else
-            origin.append(lastMove.at(i));
-    }
-    int i = static_cast<QString>(origin[1]).toInt();
-    int j = static_cast<QString>(origin[3]).toInt();
-    int m = static_cast<QString>(destination[1]).toInt();
-    int n = static_cast<QString>(destination[3]).toInt();
-    chessBoard[i][j]->setOccupied(false);
-    if(chessBoard[i][j]->piece->getSymbol() == "P")
-    {
-        if(chessBoard[i][j]->piece->getColor() == "White" && (i == 4 || i == 5))
-        {
-            chessBoard[i][j]->piece->firstmove = true;
-        }
-        else if (chessBoard[i][j]->piece->getColor() == "Black" && (i == 2 || i == 3))
-            chessBoard[i][j]->piece->firstmove = true;
-
-    }
-    chessBoard[m][n]->setPiece(chessBoard[i][j]->piece);
-    chessBoard[i][j]->piece = nullptr;
-    changeTurn();
-    if (deathPiece == "N")
-        return;
-    else
-    {
-        if (piece[0] == "W")
-        {
-            chessBoard[i][j]->setPiece(blackDeaths.last());
-            blackDeaths.pop_back();
-        }
-        else
-        {
-            chessBoard[i][j]->setPiece(whiteDeaths.last());
-            whiteDeaths.pop_back();
-        }
-        chessBoard[i][j]->setOccupied(true);
-    }
+    undoMove();
 }
 
 void Game::on_startPushButton_clicked() //start
 {
     if (!startGame)
     {
+        setChessScene();
         startGame = true;
         addPiece();
     }
@@ -230,6 +213,9 @@ void Game::on_resetPushButton_clicked()
 {
     if (startGame)
     {
+        positiveplayer1 = 0;
+        positiveplayer2 = 0;
+        mated = false;
         resetGame = true;
         movesSeries.clear();
         alives.clear();
@@ -237,7 +223,9 @@ void Game::on_resetPushButton_clicked()
         whites.clear();
         blacks.clear();
         board.clear();
+        checkDisplay->setVisible(true);
         chessScene->clear();
+        setChessScene();
         setBoard();
         addPiece();
     }
@@ -264,3 +252,15 @@ void Game::on_replacePawnPushButton_clicked()
             return;
     }
 }
+
+void Game::on_secondMovePushButton_clicked()
+{
+    if(movesSeries.size() >= 2)
+    {
+        int i = movesSeries.size()-1;
+        if(movesSeries.at(i).at(0) == movesSeries.at(i-1).at(0)) return;
+    }
+    changeTurn();
+    secondMove = true;
+}
+

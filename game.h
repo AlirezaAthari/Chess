@@ -15,6 +15,8 @@
 #include "rook.h"
 #include <QGraphicsScene>
 #include "qabstractscrollarea.h"
+#include "qstring.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -35,6 +37,7 @@ public:
     void addPiece();
     void endGame();
     void openReplacePawn();
+    void setChessScene();
     Game(QString, QString, QString, QWidget *parent = nullptr);
     ~Game();
 
@@ -45,6 +48,8 @@ private slots:
 
     void on_resetPushButton_clicked();
     void on_replacePawnPushButton_clicked();
+
+    void on_secondMovePushButton_clicked();
 
 private:
     Ui::Game *ui;
