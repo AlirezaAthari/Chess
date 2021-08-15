@@ -1,6 +1,5 @@
 #include "globals.h"
 
-
 bool secondMove = false;
 bool mated = false;
 QGraphicsTextItem *player1Point = nullptr;
@@ -17,8 +16,8 @@ QList<chessman *> alives = {};
 Cell *chessBoard[8][8] = {};
 chessman *movingPiece = nullptr;
 QString turn = "White";
-int positiveplayer1 = 0 ;
-int positiveplayer2 = 0 ;
+int positiveplayer1 = 0;
+int positiveplayer2 = 0;
 void changeTurn()
 {
     if (turn == "Black")
@@ -52,24 +51,23 @@ void undoMove()
     int m = static_cast<QString>(destination[1]).toInt();
     int n = static_cast<QString>(destination[3]).toInt();
     chessBoard[i][j]->setOccupied(false);
-    if(chessBoard[i][j]->piece->getSymbol() == 'P')
+    if (chessBoard[i][j]->piece->getSymbol() == 'P')
     {
-        if(chessBoard[i][j]->piece->getColor() == "White" && m==6)
+        if (chessBoard[i][j]->piece->getColor() == "White" && m == 6)
         {
             chessBoard[i][j]->piece->firstmove = true;
         }
-        else if (chessBoard[i][j]->piece->getColor() == "Black" && m==1)
+        else if (chessBoard[i][j]->piece->getColor() == "Black" && m == 1)
             chessBoard[i][j]->piece->firstmove = true;
-
     }
     chessBoard[m][n]->setPiece(chessBoard[i][j]->piece);
-    if(chessBoard[m][n]->piece->getColor() == "White")
+    if (chessBoard[m][n]->piece->getColor() == "White")
     {
-        positiveplayer1 -= 5 ;
+        positiveplayer1 -= 5;
     }
     else
     {
-        positiveplayer2 -= 5 ;
+        positiveplayer2 -= 5;
     }
     player1Point->setPlainText(QString::number(positiveplayer1));
     player2Point->setPlainText(QString::number(positiveplayer2));

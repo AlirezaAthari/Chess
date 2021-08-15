@@ -23,7 +23,8 @@ Cell::Cell(QGraphicsItem *parent) : QGraphicsRectItem(parent)
 
 Cell::~Cell()
 {
-   if (!resetGame)delete this;
+    if (!resetGame)
+        delete this;
 }
 
 void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -55,43 +56,52 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingSerial.append("R" + QString::number(movingPiece->getCell()->row) + "C" + QString::number(movingPiece->getCell()->column));
         movingPiece->cellDecolor();
         movingPiece->firstmove = false;
-        if(movingPiece->getSymbol() == 'P')
+        if (movingPiece->getSymbol() == 'P')
         {
-            if(movingPiece->getColor() == "White" && movingPiece->getCell()->row == 4 ) positiveplayer1 += 3;
-            if(movingPiece->getColor() == "Black" && movingPiece->getCell()->row == 3 ) positiveplayer2 += 3;
-
+            if (movingPiece->getColor() == "White" && movingPiece->getCell()->row == 4)
+                positiveplayer1 += 3;
+            if (movingPiece->getColor() == "Black" && movingPiece->getCell()->row == 3)
+                positiveplayer2 += 3;
         }
         if (this->hasPiece())
         {
             if (this->piece->getSymbol() == 'K')
             {
-                if(this->piece->getColor() == "White")
+                if (this->piece->getColor() == "White")
                     positiveplayer2 += 50;
                 else
                     positiveplayer1 += 50;
                 mated = true;
-                checkDisplay->setPlainText("Check Mated " + turn + " won!" );
+                checkDisplay->setPlainText("Check Mated " + turn + " won!");
             }
-            if(!secondMove)
+            if (!secondMove)
             {
-            if(this->piece->getColor() == "White")
-            {
-                if(this->piece->getSymbol() == 'P') positiveplayer2 += 3;
-                if(this->piece->getSymbol() == 'B') positiveplayer2 += 8;
-                if(this->piece->getSymbol() == 'H') positiveplayer2 += 8;
-                if(this->piece->getSymbol() == 'R') positiveplayer2 += 8;
-                if(this->piece->getSymbol() == 'Q') positiveplayer2 += 15;
-
-            }
-            else
-            {
-                if(this->piece->getSymbol() == 'P') positiveplayer1 += 3;
-                if(this->piece->getSymbol() == 'B') positiveplayer1 += 8;
-                if(this->piece->getSymbol() == 'H') positiveplayer1 += 8;
-                if(this->piece->getSymbol() == 'R') positiveplayer1 += 8;
-                if(this->piece->getSymbol() == 'Q') positiveplayer1 += 15;
-
-            }
+                if (this->piece->getColor() == "White")
+                {
+                    if (this->piece->getSymbol() == 'P')
+                        positiveplayer2 += 3;
+                    if (this->piece->getSymbol() == 'B')
+                        positiveplayer2 += 8;
+                    if (this->piece->getSymbol() == 'H')
+                        positiveplayer2 += 8;
+                    if (this->piece->getSymbol() == 'R')
+                        positiveplayer2 += 8;
+                    if (this->piece->getSymbol() == 'Q')
+                        positiveplayer2 += 15;
+                }
+                else
+                {
+                    if (this->piece->getSymbol() == 'P')
+                        positiveplayer1 += 3;
+                    if (this->piece->getSymbol() == 'B')
+                        positiveplayer1 += 8;
+                    if (this->piece->getSymbol() == 'H')
+                        positiveplayer1 += 8;
+                    if (this->piece->getSymbol() == 'R')
+                        positiveplayer1 += 8;
+                    if (this->piece->getSymbol() == 'Q')
+                        positiveplayer1 += 15;
+                }
             }
             this->setOccupied(false);
             this->piece->setCell(nullptr);
@@ -106,25 +116,30 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece->getCell()->piece = nullptr;
         setPiece(movingPiece);
         movingSerial.append("R" + QString::number(movingPiece->getCell()->row) + "C" + QString::number(movingPiece->getCell()->column));
-        if(movesSeries.size() >= 2 && !secondMove)
+        if (movesSeries.size() >= 2 && !secondMove)
         {
-            int i = movesSeries.size()-1;
-            if(movesSeries.at(i-1).at(8) == movingSerial.at(3) && movesSeries.at(i-1).at(10) == movingSerial.at(5) && movesSeries.at(i-1).at(3) == movingSerial.at(8) && movesSeries.at(i-1).at(5) == movingSerial.at(10) )
+            int i = movesSeries.size() - 1;
+            if (movesSeries.at(i - 1).at(8) == movingSerial.at(3) && movesSeries.at(i - 1).at(10) == movingSerial.at(5) && movesSeries.at(i - 1).at(3) == movingSerial.at(8) && movesSeries.at(i - 1).at(5) == movingSerial.at(10))
             {
-                if (movingPiece->getColor() == "White") positiveplayer1 -= 2;
-                else positiveplayer2 -= 2;
+                if (movingPiece->getColor() == "White")
+                    positiveplayer1 -= 2;
+                else
+                    positiveplayer2 -= 2;
             }
         }
         movesSeries.append(movingSerial);
         secondMove = false;
         movingPiece = nullptr;
-        if(mated) return;
+        if (mated)
+            return;
         changeTurn();
         checkThreads();
-        if(willCheck())
+        if (willCheck())
         {
-            if(turn == "White") positiveplayer2 -= 30;
-            else positiveplayer1 -= 30;
+            if (turn == "White")
+                positiveplayer2 -= 30;
+            else
+                positiveplayer1 -= 30;
             undoMove();
             changeTurn();
         }
@@ -232,61 +247,71 @@ void Cell::checkThreads()
 {
     bool checked = false;
     QList<chessman *> pieces = alives;
-    for(int i = 0 ; i < pieces.size() ; i++)
+    for (int i = 0; i < pieces.size(); i++)
     {
         pieces[i]->moves(chessBoard);
         pieces[i]->cellDecolor();
         QList<Cell *> cells = pieces[i]->getCells();
-        for(int j = 0 ; j < cells.size() ; j++)
+        for (int j = 0; j < cells.size(); j++)
         {
             if (cells.at(j)->hasPiece())
             {
-                if(cells.at(j)->piece->getColor() == pieces.at(i)->getColor())
+                if (cells.at(j)->piece->getColor() == pieces.at(i)->getColor())
                     continue;
-                if(cells.at(j)->piece->getSymbol() == 'K')
+                if (cells.at(j)->piece->getSymbol() == 'K')
                 {
                     cells.at(j)->setColor(Qt::darkRed);
                     pieces.at(i)->getCell()->setColor(Qt::darkRed);
                     checked = true;
                 }
-                if(pieces.at(i)->getColor() == "White")
+                if (pieces.at(i)->getColor() == "White")
                 {
-                    if(secondMove && turn == "Black")
+                    if (secondMove && turn == "Black")
                         continue;
-                    if(cells.at(j)->piece->getSymbol() == 'P') positiveplayer1 += 1;
-                    if(cells.at(j)->piece->getSymbol() == 'H') positiveplayer1 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'R') positiveplayer1 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'B') positiveplayer1 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'Q') positiveplayer1 += 5;
-                    if(cells.at(j)->piece->getSymbol() == 'K')
+                    if (cells.at(j)->piece->getSymbol() == 'P')
+                        positiveplayer1 += 1;
+                    if (cells.at(j)->piece->getSymbol() == 'H')
+                        positiveplayer1 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'R')
+                        positiveplayer1 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'B')
+                        positiveplayer1 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'Q')
+                        positiveplayer1 += 5;
+                    if (cells.at(j)->piece->getSymbol() == 'K')
                     {
                         positiveplayer1 += 10;
                     }
                 }
                 else
                 {
-                    if(secondMove && turn == "White")
+                    if (secondMove && turn == "White")
                         continue;
-                    if(cells.at(j)->piece->getSymbol() == 'P') positiveplayer2 += 1;
-                    if(cells.at(j)->piece->getSymbol() == 'H') positiveplayer2 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'R') positiveplayer2 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'B') positiveplayer2 += 2;
-                    if(cells.at(j)->piece->getSymbol() == 'Q') positiveplayer2 += 5;
-                    if(cells.at(j)->piece->getSymbol() == 'K')
+                    if (cells.at(j)->piece->getSymbol() == 'P')
+                        positiveplayer2 += 1;
+                    if (cells.at(j)->piece->getSymbol() == 'H')
+                        positiveplayer2 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'R')
+                        positiveplayer2 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'B')
+                        positiveplayer2 += 2;
+                    if (cells.at(j)->piece->getSymbol() == 'Q')
+                        positiveplayer2 += 5;
+                    if (cells.at(j)->piece->getSymbol() == 'K')
                     {
                         positiveplayer2 += 10;
                     }
                 }
             }
-
         }
     }
     secondMove = false;
-    if(checked) checkDisplay->setVisible(true);
+    if (checked)
+        checkDisplay->setVisible(true);
     else
     {
         checkDisplay->setVisible(false);
-        for(int i = 0 ; i < pieces.size() ; i++)
+        for (int i = 0; i < pieces.size(); i++)
             pieces.at(i)->getCell()->resetCellColor();
     }
 }
@@ -294,16 +319,16 @@ void Cell::checkThreads()
 bool Cell::willCheck()
 {
     QList<chessman *> pieces = alives;
-    for(int i = 0 ; i < pieces.size() ; i++)
+    for (int i = 0; i < pieces.size(); i++)
     {
-        if(pieces.at(i)->getCell()->getCellCurrentColor() == Qt::darkRed && pieces.at(i)->getSymbol() == 'K')
+        if (pieces.at(i)->getCell()->getCellCurrentColor() == Qt::darkRed && pieces.at(i)->getSymbol() == 'K')
         {
-            if(turn == pieces.at(i)->getColor())
+            if (turn == pieces.at(i)->getColor())
                 return false;
-            else return true;
+            else
+                return true;
         }
     }
 
     return false;
-
 }

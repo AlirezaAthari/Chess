@@ -13,30 +13,30 @@ chessman::~chessman()
 {
     if (!resetGame)
     {
-    for ( int i ; i < cells.size() ; i++ )
-    {
-        delete cells.at(i);
-    }
-    delete currentCell;
-    delete this;
+        for (int i; i < cells.size(); i++)
+        {
+            delete cells.at(i);
+        }
+        delete currentCell;
+        delete this;
     }
 }
 
 void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if(this->isDead || mated)
+    if (this->isDead || mated)
         return;
     if (movingPiece == this)
     {
         movingPiece->cellDecolor();
         movingPiece->getCell()->resetCellColor();
-        if(movingPiece->getColor() == "White")
+        if (movingPiece->getColor() == "White")
         {
-            positiveplayer1-- ;
+            positiveplayer1--;
         }
         else
         {
-            positiveplayer2-- ;
+            positiveplayer2--;
         }
 
         player1Point->setPlainText(QString::number(positiveplayer1));
@@ -55,7 +55,6 @@ void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)
         movingPiece = this;
         movingPiece->getCell()->setColor(Qt::red);
         movingPiece->moves(chessBoard);
-
     }
 
     else if (this->getColor() != movingPiece->getColor())

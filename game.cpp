@@ -106,10 +106,11 @@ void Game::addPiece()
 
 void Game::endGame() //exit
 {
-        mated = true;
-        if (positiveplayer1 > positiveplayer2)
-            checkDisplay->setPlainText("White won!");
-        else checkDisplay->setPlainText("Black won!");
+    mated = true;
+    if (positiveplayer1 > positiveplayer2)
+        checkDisplay->setPlainText("White won!");
+    else
+        checkDisplay->setPlainText("Black won!");
 }
 
 void Game::openReplacePawn()
@@ -129,48 +130,47 @@ void Game::setChessScene()
     QFont font1;
     font1.setBold(true);
     font1.setPixelSize(16);
-    turnDisplay = chessScene->addText("White" , font1);
-    checkDisplay = chessScene->addText("Check!" , font1);
+    turnDisplay = chessScene->addText("White", font1);
+    checkDisplay = chessScene->addText("Check!", font1);
     player1Point = chessScene->addText(QString::number(positiveplayer1));
-    player2Point= chessScene->addText(QString::number(positiveplayer2));
+    player2Point = chessScene->addText(QString::number(positiveplayer2));
     checkDisplay->setDefaultTextColor(Qt::red);
     checkDisplay->setPos(25, 900);
-    player1Point->setPos(143 , 732);
-    player2Point->setPos(143 , 790);
-    turnDisplay->setPos(143 , 842);
+    player1Point->setPos(143, 732);
+    player2Point->setPos(143, 790);
+    turnDisplay->setPos(143, 842);
     checkDisplay->setVisible(false);
-
 }
 
 Game::~Game()
 {
-    if(!resetGame)
+    if (!resetGame)
     {
-    delete player1Point;
-    delete player2Point;
-    delete checkDisplay;
-    delete turnDisplay;
-    delete movingPiece;
-    for ( int i ; i < blackDeaths.size() ; i++ )
-    {
-        delete blackDeaths.at(i);
-    }
-    for ( int i ; i < whiteDeaths.size() ; i++ )
-    {
-        delete whiteDeaths.at(i);
-    }
-    for ( int i ; i < alives.size() ; i++ )
-    {
-        delete alives.at(i);
-    }
-    for ( int i ; i < 8 ; i++ )
-    {
-        for (int j = 0; j < 8; j++ )
+        delete player1Point;
+        delete player2Point;
+        delete checkDisplay;
+        delete turnDisplay;
+        delete movingPiece;
+        for (int i; i < blackDeaths.size(); i++)
         {
-            delete chessBoard[i][j];
+            delete blackDeaths.at(i);
         }
-    }
-    delete chessScene;
+        for (int i; i < whiteDeaths.size(); i++)
+        {
+            delete whiteDeaths.at(i);
+        }
+        for (int i; i < alives.size(); i++)
+        {
+            delete alives.at(i);
+        }
+        for (int i; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                delete chessBoard[i][j];
+            }
+        }
+        delete chessScene;
     }
     delete ui;
 }
@@ -257,12 +257,12 @@ void Game::on_replacePawnPushButton_clicked()
 
 void Game::on_secondMovePushButton_clicked()
 {
-    if(movesSeries.size() >= 2)
+    if (movesSeries.size() >= 2)
     {
-        int i = movesSeries.size()-1;
-        if(movesSeries.at(i).at(0) == movesSeries.at(i-1).at(0)) return;
+        int i = movesSeries.size() - 1;
+        if (movesSeries.at(i).at(0) == movesSeries.at(i - 1).at(0))
+            return;
     }
     changeTurn();
     secondMove = true;
 }
-
