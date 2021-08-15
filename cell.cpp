@@ -23,7 +23,7 @@ Cell::Cell(QGraphicsItem *parent) : QGraphicsRectItem(parent)
 
 Cell::~Cell()
 {
-    delete this;
+   if (!resetGame)delete this;
 }
 
 void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)

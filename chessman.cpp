@@ -11,12 +11,15 @@ chessman::chessman(QString color, QChar symbol, QGraphicsItem *parent) : QGraphi
 
 chessman::~chessman()
 {
+    if (!resetGame)
+    {
     for ( int i ; i < cells.size() ; i++ )
     {
         delete cells.at(i);
     }
     delete currentCell;
     delete this;
+    }
 }
 
 void chessman::mousePressEvent(QGraphicsSceneMouseEvent *event)

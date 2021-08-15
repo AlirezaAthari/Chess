@@ -144,6 +144,8 @@ void Game::setChessScene()
 
 Game::~Game()
 {
+    if(!resetGame)
+    {
     delete player1Point;
     delete player2Point;
     delete checkDisplay;
@@ -169,8 +171,8 @@ Game::~Game()
         }
     }
     delete chessScene;
+    }
     delete ui;
-    delete this;
 }
 
 void Game::setBoard()
